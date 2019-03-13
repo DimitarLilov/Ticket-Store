@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{5B35D479-E41E-4E9C-AD83-475B03F3294A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{483D0A8F-F5B1-4DD7-A8CE-F95D49AE0B88}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{2A01D4BD-DF07-420C-9A63-A43DFC7DEEC1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{637A0DBD-5A6E-404F-803A-18B42AB4B679}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketStore.Web", "Web\TicketStore.Web\TicketStore.Web.csproj", "{B21ABBC5-2FB2-42DA-976F-7A8FB98E9E8B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B21ABBC5-2FB2-42DA-976F-7A8FB98E9E8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B21ABBC5-2FB2-42DA-976F-7A8FB98E9E8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B21ABBC5-2FB2-42DA-976F-7A8FB98E9E8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B21ABBC5-2FB2-42DA-976F-7A8FB98E9E8B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B21ABBC5-2FB2-42DA-976F-7A8FB98E9E8B} = {5B35D479-E41E-4E9C-AD83-475B03F3294A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {66E38ABF-F0EE-4B62-831F-D2E92A7ADB94}
+	EndGlobalSection
+EndGlobal
