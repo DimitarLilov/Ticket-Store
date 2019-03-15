@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketStore.Common", "Commo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketStore.Web.Shared", "Web\TicketStore.Web.Shared\TicketStore.Web.Shared.csproj", "{E7DA78EE-19AD-4969-A795-AB1E6ED5F881}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketStore.Web.Infrastructure", "Web\TicketStore.Web.Infrastructure\TicketStore.Web.Infrastructure.csproj", "{303FB862-3DBE-4043-8803-E7DE83F0D9FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{E7DA78EE-19AD-4969-A795-AB1E6ED5F881}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7DA78EE-19AD-4969-A795-AB1E6ED5F881}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7DA78EE-19AD-4969-A795-AB1E6ED5F881}.Release|Any CPU.Build.0 = Release|Any CPU
+		{303FB862-3DBE-4043-8803-E7DE83F0D9FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{303FB862-3DBE-4043-8803-E7DE83F0D9FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{303FB862-3DBE-4043-8803-E7DE83F0D9FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{303FB862-3DBE-4043-8803-E7DE83F0D9FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +72,7 @@ Global
 		{2015AC70-6C65-4F6F-A289-A544230C1435} = {483D0A8F-F5B1-4DD7-A8CE-F95D49AE0B88}
 		{F1B95B98-2010-4003-9FF8-C16805ECFD50} = {DE3E7188-0EC9-4686-929B-0D024492F852}
 		{E7DA78EE-19AD-4969-A795-AB1E6ED5F881} = {5B35D479-E41E-4E9C-AD83-475B03F3294A}
+		{303FB862-3DBE-4043-8803-E7DE83F0D9FF} = {5B35D479-E41E-4E9C-AD83-475B03F3294A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {66E38ABF-F0EE-4B62-831F-D2E92A7ADB94}

@@ -9,6 +9,7 @@
     using Microsoft.AspNetCore.Mvc;
     using TicketStore.Web.Shared.Account;
     using Microsoft.AspNetCore.Http;
+    using TicketStore.Web.Infrastructure.Extensions;
 
     [AllowAnonymous]
     public class AccountController : ApiController
@@ -27,7 +28,7 @@
         {
             if (model == null || !this.ModelState.IsValid)
             {
-                return this.BadRequest();
+                return this.BadRequest(this.ModelState.GetFirstError());
             }
 
             var user = new ApplicationUser

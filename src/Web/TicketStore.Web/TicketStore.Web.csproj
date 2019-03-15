@@ -28,6 +28,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Data\TicketStore.Data\TicketStore.Data.csproj" />
+    <ProjectReference Include="..\TicketStore.Web.Infrastructure\TicketStore.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\TicketStore.Web.Shared\TicketStore.Web.Shared.csproj" />
   </ItemGroup>
 
