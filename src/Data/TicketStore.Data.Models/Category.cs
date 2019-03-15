@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using TicketStore.Data.Common.Models;
 
-    public class Category : BaseModel<string>
+    public class Category : BaseModel<int>
     {
         public Category()
         {

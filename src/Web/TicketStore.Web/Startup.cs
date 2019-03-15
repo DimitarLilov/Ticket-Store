@@ -94,9 +94,7 @@ namespace TicketStore.Web
 
             app.UseMvc(routes =>
             {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller}/{action=Index}/{id?}");
+                routes.MapRoute("default", "{controller}/{action}/{id?}");
             });
 
             app.UseSpa(spa =>

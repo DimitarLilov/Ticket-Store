@@ -23,7 +23,7 @@ namespace TicketStore.Data.Models
 
         [Required]
         [ForeignKey("Event")]
-        public string EventId { get; set; }
+        public int EventId { get; set; }
 
         [Required]
         public Event Event { get; set; }

@@ -40,7 +40,9 @@ namespace TicketStore.Data.Migrations
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false)
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -51,7 +53,8 @@ namespace TicketStore.Data.Migrations
                 name: "Categories",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -169,13 +172,14 @@ namespace TicketStore.Data.Migrations
                 name: "Events",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Title = table.Column<string>(nullable: false),
                     Location = table.Column<string>(nullable: false),
                     Town = table.Column<string>(nullable: false),
                     Detail = table.Column<string>(nullable: false),
                     Date = table.Column<DateTime>(nullable: false),
-                    CategoryId = table.Column<string>(nullable: false)
+                    CategoryId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -196,7 +200,7 @@ namespace TicketStore.Data.Migrations
                     PriceCategory = table.Column<string>(nullable: false),
                     Price = table.Column<decimal>(nullable: false),
                     TicketCounts = table.Column<int>(nullable: false),
-                    EventId = table.Column<string>(nullable: false)
+                    EventId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

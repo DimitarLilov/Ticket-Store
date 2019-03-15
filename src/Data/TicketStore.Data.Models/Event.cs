@@ -8,7 +8,7 @@ namespace TicketStore.Data.Models
     using TicketStore.Data.Common.Models;
 
 
-    public class Event : BaseModel<String>
+    public class Event : BaseModel<int>
     {
         public Event()
         {
@@ -30,7 +30,7 @@ namespace TicketStore.Data.Models
         public DateTime Date { get; set; }
 
         [ForeignKey("Category")]
-        public string CategoryId { get; set; }
+        public int CategoryId { get; set; }
 
         [Required]
         public Category Category { get; set; }

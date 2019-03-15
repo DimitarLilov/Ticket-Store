@@ -144,6 +144,10 @@ namespace TicketStore.Data.Migrations
 
                     b.Property<bool>("EmailConfirmed");
 
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
                     b.Property<bool>("LockoutEnabled");
 
                     b.Property<DateTimeOffset?>("LockoutEnd");
@@ -182,8 +186,9 @@ namespace TicketStore.Data.Migrations
 
             modelBuilder.Entity("TicketStore.Data.Models.Category", b =>
                 {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name");
 
@@ -194,11 +199,11 @@ namespace TicketStore.Data.Migrations
 
             modelBuilder.Entity("TicketStore.Data.Models.Event", b =>
                 {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CategoryId")
-                        .IsRequired();
+                    b.Property<int>("CategoryId");
 
                     b.Property<DateTime>("Date");
 
@@ -226,8 +231,7 @@ namespace TicketStore.Data.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("EventId")
-                        .IsRequired();
+                    b.Property<int>("EventId");
 
                     b.Property<decimal>("Price");
 

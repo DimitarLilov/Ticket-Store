@@ -11,17 +11,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{2A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{637A0DBD-5A6E-404F-803A-18B42AB4B679}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketStore.Web", "Web\TicketStore.Web\TicketStore.Web.csproj", "{B21ABBC5-2FB2-42DA-976F-7A8FB98E9E8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketStore.Web", "Web\TicketStore.Web\TicketStore.Web.csproj", "{B21ABBC5-2FB2-42DA-976F-7A8FB98E9E8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketStore.Data", "Data\TicketStore.Data\TicketStore.Data.csproj", "{C38E370C-DD1F-43F1-9742-956B267D2D14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketStore.Data", "Data\TicketStore.Data\TicketStore.Data.csproj", "{C38E370C-DD1F-43F1-9742-956B267D2D14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketStore.Data.Models", "Data\TicketStore.Data.Models\TicketStore.Data.Models.csproj", "{9E233130-8638-47FD-B7B5-8D78709D06D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketStore.Data.Models", "Data\TicketStore.Data.Models\TicketStore.Data.Models.csproj", "{9E233130-8638-47FD-B7B5-8D78709D06D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketStore.Data.Common", "Data\TicketStore.Data.Common\TicketStore.Data.Common.csproj", "{2015AC70-6C65-4F6F-A289-A544230C1435}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketStore.Data.Common", "Data\TicketStore.Data.Common\TicketStore.Data.Common.csproj", "{2015AC70-6C65-4F6F-A289-A544230C1435}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{DE3E7188-0EC9-4686-929B-0D024492F852}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketStore.Common", "Common\TicketStore.Common\TicketStore.Common.csproj", "{F1B95B98-2010-4003-9FF8-C16805ECFD50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketStore.Common", "Common\TicketStore.Common\TicketStore.Common.csproj", "{F1B95B98-2010-4003-9FF8-C16805ECFD50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketStore.Web.Shared", "Web\TicketStore.Web.Shared\TicketStore.Web.Shared.csproj", "{E7DA78EE-19AD-4969-A795-AB1E6ED5F881}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +51,10 @@ Global
 		{F1B95B98-2010-4003-9FF8-C16805ECFD50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1B95B98-2010-4003-9FF8-C16805ECFD50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1B95B98-2010-4003-9FF8-C16805ECFD50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7DA78EE-19AD-4969-A795-AB1E6ED5F881}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7DA78EE-19AD-4969-A795-AB1E6ED5F881}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7DA78EE-19AD-4969-A795-AB1E6ED5F881}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7DA78EE-19AD-4969-A795-AB1E6ED5F881}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +65,7 @@ Global
 		{9E233130-8638-47FD-B7B5-8D78709D06D4} = {483D0A8F-F5B1-4DD7-A8CE-F95D49AE0B88}
 		{2015AC70-6C65-4F6F-A289-A544230C1435} = {483D0A8F-F5B1-4DD7-A8CE-F95D49AE0B88}
 		{F1B95B98-2010-4003-9FF8-C16805ECFD50} = {DE3E7188-0EC9-4686-929B-0D024492F852}
+		{E7DA78EE-19AD-4969-A795-AB1E6ED5F881} = {5B35D479-E41E-4E9C-AD83-475B03F3294A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {66E38ABF-F0EE-4B62-831F-D2E92A7ADB94}
