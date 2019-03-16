@@ -46,7 +46,7 @@
                 return this.Ok();
             }
 
-            return this.BadRequest();
+            return this.BadRequest(result.GetFirstError());
         }
     }
 }

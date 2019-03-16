@@ -175,6 +175,7 @@ namespace TicketStore.Web
 
             var identity = new GenericIdentity(email, "Token");
             identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id));
+            identity.AddClaim(new Claim("FirstName", user.FirstName));
 
             return new GenericPrincipal(identity, roles.ToArray());
         }

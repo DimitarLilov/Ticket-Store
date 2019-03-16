@@ -1,34 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { HomeComponent } from './components/home/home.component';
+import { SharedModule } from './components/shared/shared.module'
+import { APP_SERVICES, AuthInterceptorService, AuthErrorsInterceptorService } from './services';
+import { AppRoutingModule } from './app.routes.modul';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
-    FormsModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-    ])
+    SharedModule,
+    AppRoutingModule,
   ],
-  providers: [],
+  providers: [
+    APP_SERVICES,
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: AuthErrorsInterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

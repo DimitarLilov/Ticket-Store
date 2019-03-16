@@ -112,6 +112,7 @@
                 access_token = encodedJwt,
                 expires_in = (int)this.options.Expiration.TotalMilliseconds,
                 roles = existingClaims.Where(c => c.Type == ClaimTypes.Role).Select(c => c.Value),
+                name = existingClaims.FirstOrDefault(c => c.Type == "FirstName").Value,
             };
 
             context.Response.ContentType = GlobalConstants.JsonContentType;
