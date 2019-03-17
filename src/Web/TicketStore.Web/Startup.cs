@@ -43,7 +43,8 @@ namespace TicketStore.Web
             AutoMapperConfig.RegisterMappings(
                 typeof(EventListItem).Assembly,
                 typeof(EventDetailsResponseModel).Assembly,
-                typeof(Event).Assembly
+                typeof(Event).Assembly,
+                typeof(Category).Assembly
             );
 
             services.AddDbContext<TicketStoreDbContext>(
@@ -98,6 +99,7 @@ namespace TicketStore.Web
 
             // Application services
             services.AddTransient<IEventsService, EventsService>();
+            services.AddTransient<ICategoriesService, CategoriesService>();
 
             // Identity stores
             services.AddTransient<IUserStore<ApplicationUser>, ApplicationUserStore>();

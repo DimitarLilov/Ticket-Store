@@ -80,6 +80,11 @@
             return events.To<EventListItem>().ToList();
         }
 
+        public IEnumerable<EventListItem> GetEventsByCategoryId(int id)
+        {
+            return this.GetAllEvents(e => e.CategoryId == id).ToList();
+        }
+
         public EventDetailsResponseModel GetEvetById(int id)
         {
             var eventDetails = this.eventsRepository.All().Where(e => e.Id == id);
