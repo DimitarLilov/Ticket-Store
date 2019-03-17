@@ -24,7 +24,10 @@ namespace TicketStore.Data.Models
         public string Town { get; set; }
 
         [Required]
-        public string Detail { get; set; }
+        public string Description { get; set; }
+
+        [Required]
+        public string Image { get; set; }
 
         [Required]
         public DateTime Date { get; set; }

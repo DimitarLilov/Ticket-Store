@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using TicketStore.Data.Common.Models;
-
-namespace TicketStore.Data.Models
+﻿namespace TicketStore.Data.Models
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using TicketStore.Data.Common.Models;
+
     public class Ticket: BaseModel<string>
     {
         public Ticket()

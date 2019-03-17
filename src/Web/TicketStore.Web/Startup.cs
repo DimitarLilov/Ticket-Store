@@ -17,12 +17,16 @@ namespace TicketStore.Web
     using System.Security.Principal;
     using System.Text;
     using System.Threading.Tasks;
+    using TicketStore.Common.Mapping;
     using TicketStore.Data;
     using TicketStore.Data.Common.Repositories;
     using TicketStore.Data.Models;
     using TicketStore.Data.Repositories;
     using TicketStore.Data.Seeding;
+    using TicketStore.Services.Data;
+    using TicketStore.Services.Data.Interfaces;
     using TicketStore.Web.Infrastructure.Middlewares.Auth;
+    using TicketStore.Web.Shared.Events;
 
     public class Startup
     {
@@ -36,6 +40,12 @@ namespace TicketStore.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            AutoMapperConfig.RegisterMappings(
+                typeof(EventListItem).Assembly,
+                typeof(EventDetailsResponseModel).Assembly,
+                typeof(Event).Assembly
+            );
+
             services.AddDbContext<TicketStoreDbContext>(
                 options => options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -87,6 +97,7 @@ namespace TicketStore.Web
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
             // Application services
+            services.AddTransient<IEventsService, EventsService>();
 
             // Identity stores
             services.AddTransient<IUserStore<ApplicationUser>, ApplicationUserStore>();

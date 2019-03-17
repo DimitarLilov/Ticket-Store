@@ -23,9 +23,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{DE3E71
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketStore.Common", "Common\TicketStore.Common\TicketStore.Common.csproj", "{F1B95B98-2010-4003-9FF8-C16805ECFD50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketStore.Web.Shared", "Web\TicketStore.Web.Shared\TicketStore.Web.Shared.csproj", "{E7DA78EE-19AD-4969-A795-AB1E6ED5F881}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketStore.Web.Shared", "Web\TicketStore.Web.Shared\TicketStore.Web.Shared.csproj", "{E7DA78EE-19AD-4969-A795-AB1E6ED5F881}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketStore.Web.Infrastructure", "Web\TicketStore.Web.Infrastructure\TicketStore.Web.Infrastructure.csproj", "{303FB862-3DBE-4043-8803-E7DE83F0D9FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketStore.Web.Infrastructure", "Web\TicketStore.Web.Infrastructure\TicketStore.Web.Infrastructure.csproj", "{303FB862-3DBE-4043-8803-E7DE83F0D9FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketStore.Services.Data", "Services\TicketStore.Services.Data\TicketStore.Services.Data.csproj", "{CBCA3008-21C3-4E6F-8CD4-C9A357C41069}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +63,10 @@ Global
 		{303FB862-3DBE-4043-8803-E7DE83F0D9FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{303FB862-3DBE-4043-8803-E7DE83F0D9FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{303FB862-3DBE-4043-8803-E7DE83F0D9FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBCA3008-21C3-4E6F-8CD4-C9A357C41069}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBCA3008-21C3-4E6F-8CD4-C9A357C41069}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBCA3008-21C3-4E6F-8CD4-C9A357C41069}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBCA3008-21C3-4E6F-8CD4-C9A357C41069}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +79,7 @@ Global
 		{F1B95B98-2010-4003-9FF8-C16805ECFD50} = {DE3E7188-0EC9-4686-929B-0D024492F852}
 		{E7DA78EE-19AD-4969-A795-AB1E6ED5F881} = {5B35D479-E41E-4E9C-AD83-475B03F3294A}
 		{303FB862-3DBE-4043-8803-E7DE83F0D9FF} = {5B35D479-E41E-4E9C-AD83-475B03F3294A}
+		{CBCA3008-21C3-4E6F-8CD4-C9A357C41069} = {2A01D4BD-DF07-420C-9A63-A43DFC7DEEC1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {66E38ABF-F0EE-4B62-831F-D2E92A7ADB94}

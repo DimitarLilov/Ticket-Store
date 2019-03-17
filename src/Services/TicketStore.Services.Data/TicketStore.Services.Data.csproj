@@ -6,7 +6,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Common\TicketStore.Common\TicketStore.Common.csproj" />
+    <ProjectReference Include="..\..\Data\TicketStore.Data.Common\TicketStore.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\TicketStore.Data.Models\TicketStore.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\TicketStore.Web.Shared\TicketStore.Web.Shared.csproj" />
   </ItemGroup>
 
 </Project>

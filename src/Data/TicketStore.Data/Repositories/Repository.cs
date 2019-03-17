@@ -27,9 +27,16 @@
 
         public virtual Task<TEntity> GetByIdAsync(params object[] id) => this.DbSet.FindAsync(id);
 
+        public virtual TEntity GetById(params object[] id) => this.DbSet.Find(id);
+
         public virtual void Add(TEntity entity)
         {
             this.DbSet.Add(entity);
+        }
+
+        public Task AddAsync(TEntity entity)
+        {
+            return this.DbSet.AddAsync(entity);
         }
 
         public virtual void Update(TEntity entity)
