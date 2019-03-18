@@ -6,6 +6,7 @@
     using System.Threading.Tasks;
     using TicketStore.Data.Models;
     using TicketStore.Web.Shared.Events;
+    using TicketStore.Web.Shared.Tickets;
 
     public interface IEventsService
     {
@@ -17,8 +18,9 @@
 
         EventDetailsResponseModel GetEvetById(int id);
         Task<int> AddEvent(CreateEventRequestModel model);
-        Task<EditEventRequestModel> EditEvent(int id, EditEventRequestModel model);
+        Task<EditEventResponseModel> EditEvent(int id, EditEventRequestModel model);
         Task DeleteEvent(int id);
         IEnumerable<EventListItem> GetEventsByCategoryId(int id);
+        IEnumerable<TicketResponseModel> GetEvetTickets(int id);
     }
 }

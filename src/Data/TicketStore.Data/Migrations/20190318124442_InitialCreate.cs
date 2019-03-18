@@ -177,7 +177,8 @@ namespace TicketStore.Data.Migrations
                     Title = table.Column<string>(nullable: false),
                     Location = table.Column<string>(nullable: false),
                     Town = table.Column<string>(nullable: false),
-                    Detail = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: false),
+                    Image = table.Column<string>(nullable: false),
                     Date = table.Column<DateTime>(nullable: false),
                     CategoryId = table.Column<int>(nullable: false)
                 },
@@ -196,10 +197,11 @@ namespace TicketStore.Data.Migrations
                 name: "Tickets",
                 columns: table => new
                 {
-                    Id = table.Column<string>(nullable: false),
-                    PriceCategory = table.Column<string>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: false),
                     Price = table.Column<decimal>(nullable: false),
-                    TicketCounts = table.Column<int>(nullable: false),
+                    Quantity = table.Column<int>(nullable: false),
                     EventId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -218,7 +220,7 @@ namespace TicketStore.Data.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(nullable: false),
-                    TicketId = table.Column<string>(nullable: false),
+                    TicketId = table.Column<int>(nullable: false),
                     Id = table.Column<string>(nullable: false)
                 },
                 constraints: table =>

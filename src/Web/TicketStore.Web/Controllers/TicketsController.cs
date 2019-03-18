@@ -4,74 +4,64 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
-    using System.Collections.Generic;
     using System.Threading.Tasks;
     using TicketStore.Services.Data.Interfaces;
     using TicketStore.Web.Infrastructure.Extensions;
-    using TicketStore.Web.Shared.Categories;
-    using TicketStore.Web.Shared.Events;
+    using TicketStore.Web.Shared.Tickets;
 
-    public class CategoriesController : ApiController
+    public class TicketsController : ApiController
     {
-        private readonly ICategoriesService categoriesService;
-
+        private readonly ITicketsService ticketsService;
         private readonly IEventsService eventsService;
 
-        public CategoriesController(
-            ICategoriesService categoriesService,
-            IEventsService eventsService)
+        public TicketsController(ITicketsService ticketsService, IEventsService eventsService)
         {
-            this.categoriesService = categoriesService;
+            this.ticketsService = ticketsService;
             this.eventsService = eventsService;
-        }
-
-
-        [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        public ActionResult<IEnumerable<CategoryResponseModel>> Index(int page)
-        {
-            var categories = this.categoriesService.GetAllCategories();
-
-            return Ok(categories);
         }
 
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
-        public ActionResult<CategoryDetailsResponseModel> Details(int id)
+        public ActionResult<TicketDetailsResponseModel> Details(int id)
         {
-            var categoryName = this.categoriesService.GetCategoryNameById(id);
-            if (string.IsNullOrEmpty(categoryName))
+            TicketDetailsResponseModel ticket = this.ticketsService.GetEvetById(id);
+            if (ticket == null)
             {
                 return this.NotFound();
             }
 
-            IEnumerable<EventListItem> events = this.eventsService.GetEventsByCategoryId(id);
-
-            var response = new CategoryDetailsResponseModel() { Name = categoryName, Events = events };
-
-            return Ok(response);
+            return Ok(ticket);
         }
 
         [HttpPost()]
         [Authorize(Roles = "Administrator", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult<CategoryDetailsResponseModel>> Create([FromBody]CategoryRequestModel model)
+        public async Task<ActionResult<int>> Create([FromBody]TicketRequestModel model)
         {
             if (!this.HttpContext.User.IsInRole("Administrator"))
             {
                 return this.Unauthorized();
+            }
+
+            var eventDb = eventsService.GetEvetById(model.EventId);
+
+            if(eventDb == null)
+            {
+                return this.NotFound();
             }
             if (model == null || !this.ModelState.IsValid)
             {
                 return this.BadRequest(this.ModelState.GetFirstError());
             }
 
-            return Ok(await this.categoriesService.AddCategory(model));
+            var ticket = await this.ticketsService.AddTicket(model);
+            return Ok(ticket);
         }
 
         [HttpPut("{id}")]
@@ -81,24 +71,25 @@
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult<CategoryResponseModel>> Edit(int id, [FromBody]CategoryRequestModel model)
+        public async Task<ActionResult<TicketResponseModel>> Edit(int id, [FromBody]TicketRequestModel model)
         {
-            var category = this.categoriesService.GetCategoryById(id);
-
-            if (category == null)
-            {
-                return this.NotFound();
-            }
             if (!this.HttpContext.User.IsInRole("Administrator"))
             {
                 return this.Unauthorized();
+            }
+            var eventDb = eventsService.GetEvetById(model.EventId);
+
+            if (eventDb == null)
+            {
+                return this.NotFound();
             }
             if (model == null || !this.ModelState.IsValid)
             {
                 return this.BadRequest(this.ModelState.GetFirstError());
             }
 
-            return Ok(await this.categoriesService.EditCategory(id, model));
+            var ticket = await this.ticketsService.EditTicket(id,model);
+            return Ok(ticket);
         }
 
         [HttpDelete("{id}")]
@@ -110,9 +101,9 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult> Delete(int id)
         {
-            var category = this.categoriesService.GetCategoryById(id);
+            var ticket = this.ticketsService.GetEvetById(id);
 
-            if (category == null)
+            if (ticket == null)
             {
                 return this.NotFound();
             }
@@ -121,7 +112,7 @@
                 return this.Unauthorized();
             }
 
-            await this.categoriesService.DeleteCategory(id);
+            await this.ticketsService.DeleteTicket(id);
 
             return Ok();
         }

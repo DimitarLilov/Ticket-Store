@@ -44,7 +44,8 @@ namespace TicketStore.Web
                 typeof(EventListItem).Assembly,
                 typeof(EventDetailsResponseModel).Assembly,
                 typeof(Event).Assembly,
-                typeof(Category).Assembly
+                typeof(Category).Assembly,
+                typeof(Ticket).Assembly
             );
 
             services.AddDbContext<TicketStoreDbContext>(
@@ -100,6 +101,7 @@ namespace TicketStore.Web
             // Application services
             services.AddTransient<IEventsService, EventsService>();
             services.AddTransient<ICategoriesService, CategoriesService>();
+            services.AddTransient<ITicketsService, TicketsService>();
 
             // Identity stores
             services.AddTransient<IUserStore<ApplicationUser>, ApplicationUserStore>();

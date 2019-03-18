@@ -5,7 +5,7 @@
     using System.ComponentModel.DataAnnotations.Schema;
     using TicketStore.Data.Common.Models;
 
-    public class Ticket: BaseModel<string>
+    public class Ticket: BaseModel<int>
     {
         public Ticket()
         {
@@ -13,13 +13,13 @@
         }
 
         [Required]
-        public string PriceCategory { get; set; }
+        public string Name { get; set; }
 
         [Required]
         public decimal Price { get; set; }
 
         [Required]
-        public int TicketCounts { get; set; }
+        public int Quantity { get; set; }
 
         [Required]
         [ForeignKey("Event")]

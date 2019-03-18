@@ -4,11 +4,13 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     using TicketStore.Data.Models;
     using TicketStore.Services.Data.Interfaces;
     using TicketStore.Web.Infrastructure.Extensions;
     using TicketStore.Web.Shared.Events;
+    using TicketStore.Web.Shared.Tickets;
 
     public class EventsController : ApiController
     {
@@ -22,13 +24,11 @@
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public ActionResult<EventsResponseModel> Index(int page)
+        public ActionResult<IEnumerable<EventListItem>> Index(int page)
         {
             var events = this.eventsService.GetAllEvents();
 
-            EventsResponseModel response = new EventsResponseModel { events = events };
-
-            return Ok(response);
+            return Ok(events);
         }
 
         [HttpGet("{id}")]
@@ -39,6 +39,21 @@
         {
             var eventDetails = this.eventsService.GetEvetById(id);
             if(eventDetails == null)
+            {
+                return this.NotFound();
+            }
+
+            return Ok(eventDetails);
+        }
+
+        [HttpGet("{id}/tickets")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
+        public ActionResult<IEnumerable<TicketResponseModel>> Tickets(int id)
+        {
+            var eventDetails = this.eventsService.GetEvetTickets(id);
+            if (eventDetails == null)
             {
                 return this.NotFound();
             }
@@ -73,7 +88,7 @@
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult<EventDetailsResponseModel>> Edit(int id,[FromBody]EditEventRequestModel model)
+        public async Task<ActionResult<EditEventResponseModel>> Edit(int id,[FromBody]EditEventRequestModel model)
         {
             var dbEventModel = this.eventsService.GetEvetById(id);
 
@@ -100,7 +115,7 @@
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult<EventDetailsResponseModel>> Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
             var dbEventModel = this.eventsService.GetEvetById(id);
 

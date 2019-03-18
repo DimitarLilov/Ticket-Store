@@ -10,7 +10,7 @@ using TicketStore.Data;
 namespace TicketStore.Data.Migrations
 {
     [DbContext(typeof(TicketStoreDbContext))]
-    [Migration("20190315175053_InitialCreate")]
+    [Migration("20190318124442_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -209,7 +209,10 @@ namespace TicketStore.Data.Migrations
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<string>("Detail")
+                    b.Property<string>("Description")
+                        .IsRequired();
+
+                    b.Property<string>("Image")
                         .IsRequired();
 
                     b.Property<string>("Location")
@@ -230,17 +233,18 @@ namespace TicketStore.Data.Migrations
 
             modelBuilder.Entity("TicketStore.Data.Models.Ticket", b =>
                 {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("EventId");
 
-                    b.Property<decimal>("Price");
-
-                    b.Property<string>("PriceCategory")
+                    b.Property<string>("Name")
                         .IsRequired();
 
-                    b.Property<int>("TicketCounts");
+                    b.Property<decimal>("Price");
+
+                    b.Property<int>("Quantity");
 
                     b.HasKey("Id");
 
@@ -253,7 +257,7 @@ namespace TicketStore.Data.Migrations
                 {
                     b.Property<string>("UserId");
 
-                    b.Property<string>("TicketId");
+                    b.Property<int>("TicketId");
 
                     b.Property<string>("Id")
                         .IsRequired();

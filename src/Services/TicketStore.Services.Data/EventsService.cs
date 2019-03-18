@@ -11,6 +11,7 @@
     using TicketStore.Data.Models;
     using TicketStore.Services.Data.Interfaces;
     using TicketStore.Web.Shared.Events;
+    using TicketStore.Web.Shared.Tickets;
 
     public class EventsService : IEventsService
     {
@@ -42,14 +43,14 @@
             await this.eventsRepository.SaveChangesAsync();
         }
 
-        public async Task<EditEventRequestModel> EditEvent(int id, EditEventRequestModel model)
+        public async Task<EditEventResponseModel> EditEvent(int id, EditEventRequestModel model)
         {
             var editModel = Mapper.Map<Event>(model);
             editModel.Id = id;
             this.eventsRepository.Update(editModel);
             await this.eventsRepository.SaveChangesAsync();
 
-            return model;
+            return Mapper.Map<EditEventResponseModel>(model);
         }
 
         public IEnumerable<EventListItem> GetAllEvents(
@@ -90,6 +91,11 @@
             var eventDetails = this.eventsRepository.All().Where(e => e.Id == id);
 
             return eventDetails.To<EventDetailsResponseModel>().FirstOrDefault();
+        }
+
+        public IEnumerable<TicketResponseModel> GetEvetTickets(int id)
+        {
+            return this.GetEvetById(id).Tickets.ToList();
         }
     }
 }

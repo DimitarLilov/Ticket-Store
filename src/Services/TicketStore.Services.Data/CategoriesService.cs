@@ -36,14 +36,14 @@
             return category.To<CategoryResponseModel>().FirstOrDefault();
         }
 
-        public async Task<CategoryRequestModel> EditCategory(int id, CategoryRequestModel model)
+        public async Task<CategoryResponseModel> EditCategory(int id, CategoryRequestModel model)
         {
             var category = Mapper.Map<Category>(model);
             category.Id = id;
             this.categoriesRepository.Update(category);
             await this.categoriesRepository.SaveChangesAsync();
 
-            return model;
+            return Mapper.Map<CategoryResponseModel>(model);
         }
 
         public IEnumerable<CategoryResponseModel> GetAllCategories()

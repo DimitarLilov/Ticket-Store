@@ -1,14 +1,20 @@
-﻿using TicketStore.Data.Common.Models;
-
-namespace TicketStore.Data.Models
+﻿namespace TicketStore.Data.Models
 {
-    public class UserTickets : BaseModel<string> 
+    using System;
+    using TicketStore.Data.Common.Models;
+
+    public class UserTickets : BaseModel<string>
     {
+        public UserTickets()
+        {
+            this.Id = Guid.NewGuid().ToString();
+        }
+
         public string UserId { get; set; }
 
         public ApplicationUser User { get; set; }
 
-        public string TicketId { get; set; }
+        public int TicketId { get; set; }
 
         public Ticket Ticket { get; set; }
 
