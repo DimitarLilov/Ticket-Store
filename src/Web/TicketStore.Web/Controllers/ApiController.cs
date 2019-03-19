@@ -6,8 +6,5 @@
     [ApiController]
     public class ApiController : ControllerBase
     {
-
     }
-
-
 }

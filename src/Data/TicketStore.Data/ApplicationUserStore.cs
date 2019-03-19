@@ -2,21 +2,11 @@
 {
 using System.Security.Claims;
 
-    using TicketStore.Data.Models;
-
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+    using TicketStore.Data.Models;
 
-    public class ApplicationUserStore : UserStore<
-        ApplicationUser,
-        ApplicationRole,
-        TicketStoreDbContext,
-        string,
-        IdentityUserClaim<string>,
-        IdentityUserRole<string>,
-        IdentityUserLogin<string>,
-        IdentityUserToken<string>,
-        IdentityRoleClaim<string>>
+    public class ApplicationUserStore : UserStore<ApplicationUser, ApplicationRole, TicketStoreDbContext, string, IdentityUserClaim<string>, IdentityUserRole<string>, IdentityUserLogin<string>, IdentityUserToken<string>, IdentityRoleClaim<string>>
     {
         public ApplicationUserStore(TicketStoreDbContext context, IdentityErrorDescriber describer = null)
             : base(context, describer)

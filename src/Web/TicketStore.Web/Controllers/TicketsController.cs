@@ -1,10 +1,12 @@
 ﻿namespace TicketStore.Web.Controllers
 {
+    using System.Threading.Tasks;
+
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
-    using System.Threading.Tasks;
+
     using TicketStore.Services.Data.Interfaces;
     using TicketStore.Web.Infrastructure.Extensions;
     using TicketStore.Web.Shared.Tickets;
@@ -32,10 +34,10 @@
                 return this.NotFound();
             }
 
-            return Ok(ticket);
+            return this.Ok(ticket);
         }
 
-        [HttpPost()]
+        [HttpPost]
         [Authorize(Roles = "Administrator", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -49,19 +51,20 @@
                 return this.Unauthorized();
             }
 
-            var eventDb = eventsService.GetEvetById(model.EventId);
+            var eventDb = this.eventsService.GetEvetById(model.EventId);
 
-            if(eventDb == null)
+            if (eventDb == null)
             {
                 return this.NotFound();
             }
+
             if (model == null || !this.ModelState.IsValid)
             {
                 return this.BadRequest(this.ModelState.GetFirstError());
             }
 
             var ticket = await this.ticketsService.AddTicket(model);
-            return Ok(ticket);
+            return this.Ok(ticket);
         }
 
         [HttpPut("{id}")]
@@ -77,19 +80,21 @@
             {
                 return this.Unauthorized();
             }
-            var eventDb = eventsService.GetEvetById(model.EventId);
+
+            var eventDb = this.eventsService.GetEvetById(model.EventId);
 
             if (eventDb == null)
             {
                 return this.NotFound();
             }
+
             if (model == null || !this.ModelState.IsValid)
             {
                 return this.BadRequest(this.ModelState.GetFirstError());
             }
 
-            var ticket = await this.ticketsService.EditTicket(id,model);
-            return Ok(ticket);
+            var ticket = await this.ticketsService.EditTicket(id, model);
+            return this.Ok(ticket);
         }
 
         [HttpDelete("{id}")]
@@ -107,6 +112,7 @@
             {
                 return this.NotFound();
             }
+
             if (!this.HttpContext.User.IsInRole("Administrator"))
             {
                 return this.Unauthorized();
@@ -114,8 +120,7 @@
 
             await this.ticketsService.DeleteTicket(id);
 
-            return Ok();
+            return this.Ok();
         }
-
     }
 }

@@ -23,6 +23,6 @@
 
         public CategoryResponseModel Category { get; set; }
 
-        public IEnumerable<TicketResponseModel> Tickets {get; set;}
+        public IEnumerable<TicketResponseModel> Tickets { get; set; }
     }
 }

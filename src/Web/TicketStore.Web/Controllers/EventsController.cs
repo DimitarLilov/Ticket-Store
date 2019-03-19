@@ -1,13 +1,15 @@
 ﻿namespace TicketStore.Web.Controllers
 {
-    using Microsoft.AspNetCore.Authentication.JwtBearer;
-    using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Mvc;
     using System;
     using System.Collections.Generic;
     using System.Linq.Expressions;
     using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Authentication.JwtBearer;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+
     using TicketStore.Data.Models;
     using TicketStore.Services.Data.Interfaces;
     using TicketStore.Web.Infrastructure.Extensions;
@@ -16,7 +18,6 @@
 
     public class EventsController : ApiController
     {
-
         private readonly IEventsService eventsService;
 
         public EventsController(IEventsService eventsService)
@@ -39,10 +40,10 @@
             if (page != null && page != 0)
             {
                 var skip = (page - 1) * pageSize;
-                return Ok(eventsService.GetAllEvents(null, orderByExpression, orderByDecendingExpression, skip, pageSize));
+                return this.Ok(this.eventsService.GetAllEvents(null, orderByExpression, orderByDecendingExpression, skip, pageSize));
             }
 
-            return Ok(eventsService.GetAllEvents(null, orderByExpression, orderByDecendingExpression));
+            return this.Ok(this.eventsService.GetAllEvents(null, orderByExpression, orderByDecendingExpression));
         }
 
         [HttpGet("{id}")]
@@ -52,12 +53,12 @@
         public ActionResult<EventDetailsResponseModel> Details(int id)
         {
             var eventDetails = this.eventsService.GetEvetById(id);
-            if(eventDetails == null)
+            if (eventDetails == null)
             {
                 return this.NotFound();
             }
 
-            return Ok(eventDetails);
+            return this.Ok(eventDetails);
         }
 
         [HttpGet("{id}/tickets")]
@@ -72,27 +73,28 @@
                 return this.NotFound();
             }
 
-            return Ok(eventDetails);
+            return this.Ok(eventDetails);
         }
 
-        [HttpPost()]
+        [HttpPost]
         [Authorize(Roles = "Administrator", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesDefaultResponseType]
-        public async  Task<ActionResult<EventDetailsResponseModel>> Create([FromBody]CreateEventRequestModel model)
+        public async Task<ActionResult<EventDetailsResponseModel>> Create([FromBody]CreateEventRequestModel model)
         {
             if (!this.HttpContext.User.IsInRole("Administrator"))
             {
                 return this.Unauthorized();
             }
-            if(model == null || !this.ModelState.IsValid)
+
+            if (model == null || !this.ModelState.IsValid)
             {
                 return this.BadRequest(this.ModelState.GetFirstError());
             }
           
-            return Ok( await this.eventsService.AddEvent(model));
+            return this.Ok(await this.eventsService.AddEvent(model));
         }
 
         [HttpPut("{id}")]
@@ -102,24 +104,26 @@
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult<EditEventResponseModel>> Edit(int id,[FromBody]EditEventRequestModel model)
+        public async Task<ActionResult<EditEventResponseModel>> Edit(int id, [FromBody]EditEventRequestModel model)
         {
-            var dbEventModel = this.eventsService.GetEvetById(id);
+            var eventModel = this.eventsService.GetEvetById(id);
 
-            if (dbEventModel == null)
+            if (eventModel == null)
             {
                 return this.NotFound();
             }
+
             if (!this.HttpContext.User.IsInRole("Administrator"))
             {
                 return this.Unauthorized();
             }
+
             if (model == null || !this.ModelState.IsValid)
             {
                 return this.BadRequest(this.ModelState.GetFirstError());
             }
 
-            return Ok(await this.eventsService.EditEvent(id, model));
+            return this.Ok(await this.eventsService.EditEvent(id, model));
         }
 
         [HttpDelete("{id}")]
@@ -131,12 +135,13 @@
         [ProducesDefaultResponseType]
         public async Task<ActionResult> Delete(int id)
         {
-            var dbEventModel = this.eventsService.GetEvetById(id);
+            var eventModel = this.eventsService.GetEvetById(id);
 
-            if (dbEventModel == null)
+            if (eventModel == null)
             {
                 return this.NotFound();
             }
+
             if (!this.HttpContext.User.IsInRole("Administrator"))
             {
                 return this.Unauthorized();
@@ -144,7 +149,7 @@
 
             await this.eventsService.DeleteEvent(id);
 
-            return Ok();
+            return this.Ok();
         }
     }
 }

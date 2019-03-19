@@ -2,14 +2,13 @@
 {
     using System.Threading.Tasks;
 
-    using TicketStore.Data.Models;
-
     using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using TicketStore.Web.Shared.Account;
-    using Microsoft.AspNetCore.Http;
+    using TicketStore.Data.Models;
     using TicketStore.Web.Infrastructure.Extensions;
+    using TicketStore.Web.Shared.Account;
 
     [AllowAnonymous]
     public class AccountController : ApiController

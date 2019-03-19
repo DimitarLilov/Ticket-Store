@@ -1,8 +1,8 @@
 ﻿namespace TicketStore.Services.Data
 {
-    using AutoMapper;
     using System.Linq;
     using System.Threading.Tasks;
+    using AutoMapper;
     using TicketStore.Common.Mapping;
     using TicketStore.Data.Common.Repositories;
     using TicketStore.Data.Models;
@@ -11,7 +11,6 @@
 
     public class TicketsService : ITicketsService
     {
-
         private readonly IRepository<Ticket> ticketsRepository;
 
         public TicketsService(IRepository<Ticket> ticketsRepository)

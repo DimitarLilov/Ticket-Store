@@ -1,7 +1,7 @@
 ﻿namespace TicketStore.Data.Models
 {
-    using Microsoft.AspNetCore.Identity;
     using System;
+    using Microsoft.AspNetCore.Identity;
 
     public class ApplicationRole : IdentityRole
     {

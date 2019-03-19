@@ -5,7 +5,6 @@
 
     public class EditEventResponseModel : IMapFrom<EditEventRequestModel>
     {
-
         public string Title { get; set; }
 
         public string Location { get; set; }

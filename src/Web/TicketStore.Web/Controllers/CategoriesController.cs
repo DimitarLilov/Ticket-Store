@@ -1,18 +1,19 @@
 ﻿namespace TicketStore.Web.Controllers
 {
-    using Microsoft.AspNetCore.Authentication.JwtBearer;
-    using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Mvc;
     using System;
     using System.Collections.Generic;
     using System.Linq.Expressions;
     using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Authentication.JwtBearer;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc;
+
     using TicketStore.Data.Models;
     using TicketStore.Services.Data.Interfaces;
     using TicketStore.Web.Infrastructure.Extensions;
     using TicketStore.Web.Shared.Categories;
-    using TicketStore.Web.Shared.Events;
 
     public class CategoriesController : ApiController
     {
@@ -28,14 +29,13 @@
             this.eventsService = eventsService;
         }
 
-
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<IEnumerable<CategoryResponseModel>> Index(int page)
         {
             var categories = this.categoriesService.GetAllCategories();
 
-            return Ok(categories);
+            return this.Ok(categories);
         }
 
         [HttpGet("{id}")]
@@ -64,16 +64,16 @@
             if (page != null && page != 0)
             {
                 var skip = (page - 1) * pageSize;
-                response.Events =  eventsService.GetAllEvents(getEventsByCatecoryExpresiond, orderByExpression, orderByDecendingExpression, skip, pageSize);
-                return Ok(response);
+                response.Events = this.eventsService.GetAllEvents(getEventsByCatecoryExpresiond, orderByExpression, orderByDecendingExpression, skip, pageSize);
+                return this.Ok(response);
             }
 
-            var events = eventsService.GetAllEvents(getEventsByCatecoryExpresiond, orderByExpression, orderByDecendingExpression);
+            var events = this.eventsService.GetAllEvents(getEventsByCatecoryExpresiond, orderByExpression, orderByDecendingExpression);
             response.Events = events;
-            return Ok(response);
+            return this.Ok(response);
         }
 
-        [HttpPost()]
+        [HttpPost]
         [Authorize(Roles = "Administrator", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -85,12 +85,13 @@
             {
                 return this.Unauthorized();
             }
+
             if (model == null || !this.ModelState.IsValid)
             {
                 return this.BadRequest(this.ModelState.GetFirstError());
             }
 
-            return Ok(await this.categoriesService.AddCategory(model));
+            return this.Ok(await this.categoriesService.AddCategory(model));
         }
 
         [HttpPut("{id}")]
@@ -108,16 +109,18 @@
             {
                 return this.NotFound();
             }
+
             if (!this.HttpContext.User.IsInRole("Administrator"))
             {
                 return this.Unauthorized();
             }
+
             if (model == null || !this.ModelState.IsValid)
             {
                 return this.BadRequest(this.ModelState.GetFirstError());
             }
 
-            return Ok(await this.categoriesService.EditCategory(id, model));
+            return this.Ok(await this.categoriesService.EditCategory(id, model));
         }
 
         [HttpDelete("{id}")]
@@ -135,6 +138,7 @@
             {
                 return this.NotFound();
             }
+
             if (!this.HttpContext.User.IsInRole("Administrator"))
             {
                 return this.Unauthorized();
@@ -142,8 +146,7 @@
 
             await this.categoriesService.DeleteCategory(id);
 
-            return Ok();
+            return this.Ok();
         }
-
     }
 }

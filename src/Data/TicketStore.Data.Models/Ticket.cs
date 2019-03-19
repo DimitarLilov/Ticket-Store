@@ -5,7 +5,7 @@
     using System.ComponentModel.DataAnnotations.Schema;
     using TicketStore.Data.Common.Models;
 
-    public class Ticket: BaseModel<int>
+    public class Ticket : BaseModel<int>
     {
         public Ticket()
         {

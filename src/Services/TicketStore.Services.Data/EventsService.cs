@@ -1,11 +1,11 @@
 ﻿namespace TicketStore.Services.Data
 {
-    using AutoMapper;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
     using System.Threading.Tasks;
+    using AutoMapper;
     using TicketStore.Common.Mapping;
     using TicketStore.Data.Common.Repositories;
     using TicketStore.Data.Models;
@@ -23,15 +23,13 @@
         }
 
         public async Task<int> AddEvent(CreateEventRequestModel model)
-        {
-            
+        { 
             var eventItem = Mapper.Map<Event>(model);
 
             await this.eventsRepository.AddAsync(eventItem);
             await this.eventsRepository.SaveChangesAsync();
 
             return eventItem.Id;
-
         }
 
         public async Task DeleteEvent(int id)
@@ -54,31 +52,35 @@
         }
 
         public IEnumerable<EventListItem> GetAllEvents(
-            Expression<Func<Event,bool>> predicate = null,
-            Expression<Func<Event,object>> orderBy = null,
-            Expression<Func<Event, object>> orderByDescending = null,
-            int? skip = null,
+            Expression<Func<Event, bool>> predicate = null, 
+            Expression<Func<Event, object>> orderBy = null, 
+            Expression<Func<Event, object>> orderByDescending = null, 
+            int? skip = null, 
             int? take = null)
         {
             var events = this.eventsRepository.All();
 
-            if(predicate != null)
+            if (predicate != null)
             {
                 events = events.Where(predicate);
             }
+
             if (orderBy != null)
             {
                 events = events.OrderBy(orderBy);
             }
+
             if (orderByDescending != null)
             {
                 events = events.OrderByDescending(orderByDescending);
             }
+
             if (skip != null)
             {
                 events = events.Skip(skip.Value);
             }
-            if(take != null)
+
+            if (take != null)
             {
                 events = events.Take(take.Value);
             }

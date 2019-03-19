@@ -4,9 +4,9 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    using TicketStore.Data.Common.Repositories;
-
     using Microsoft.EntityFrameworkCore;
+
+    using TicketStore.Data.Common.Repositories;
 
     public class Repository<TEntity> : IRepository<TEntity>
         where TEntity : class

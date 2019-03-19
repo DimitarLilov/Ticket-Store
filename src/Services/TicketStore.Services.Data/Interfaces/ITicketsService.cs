@@ -6,8 +6,11 @@
     public interface ITicketsService
     {
         Task<int> AddTicket(TicketRequestModel model);
+
         TicketDetailsResponseModel GetEvetById(int id);
-        Task<TicketResponseModel> EditTicket(int id,TicketRequestModel model);
+
+        Task<TicketResponseModel> EditTicket(int id, TicketRequestModel model);
+
         Task DeleteTicket(int id);
     }
 }

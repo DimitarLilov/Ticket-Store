@@ -9,12 +9,12 @@
     using System.Security.Principal;
     using System.Threading.Tasks;
 
-    using TicketStore.Common;
-
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Options;
 
     using Newtonsoft.Json;
+
+    using TicketStore.Common;
 
     public class TokenProviderMiddleware
     {

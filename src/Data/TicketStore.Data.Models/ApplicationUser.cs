@@ -1,7 +1,7 @@
 ﻿namespace TicketStore.Data.Models
 {
-    using Microsoft.AspNetCore.Identity;
     using System.Collections.Generic;
+    using Microsoft.AspNetCore.Identity;
 
     public class ApplicationUser : IdentityUser
     {
@@ -12,7 +12,6 @@
             this.Logins = new HashSet<IdentityUserLogin<string>>();
             this.Tickets = new HashSet<UserTickets>();
         }
-
 
         public string FirstName { get; set; }
 

@@ -1,5 +1,4 @@
-﻿
-namespace TicketStore.Data.Models
+﻿namespace TicketStore.Data.Models
 {
     using System;
     using System.Collections.Generic;
@@ -7,13 +6,13 @@ namespace TicketStore.Data.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using TicketStore.Data.Common.Models;
 
-
     public class Event : BaseModel<int>
     {
         public Event()
         {
             this.Tickets = new HashSet<Ticket>();
         }
+
         [Required]
         public string Title { get; set; }
 

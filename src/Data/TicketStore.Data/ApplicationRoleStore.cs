@@ -6,12 +6,7 @@
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using TicketStore.Data.Models;
 
-    public class ApplicationRoleStore : RoleStore<
-        ApplicationRole,
-        TicketStoreDbContext,
-        string,
-        IdentityUserRole<string>,
-        IdentityRoleClaim<string>>
+    public class ApplicationRoleStore : RoleStore<ApplicationRole, TicketStoreDbContext, string, IdentityUserRole<string>, IdentityRoleClaim<string>>
     {
         public ApplicationRoleStore(TicketStoreDbContext context, IdentityErrorDescriber describer = null)
             : base(context, describer)
@@ -27,4 +22,3 @@
             };
     }
 }
-

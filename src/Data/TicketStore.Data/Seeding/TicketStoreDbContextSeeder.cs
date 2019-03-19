@@ -1,20 +1,19 @@
 ﻿namespace TicketStore.Data.Seeding
 {
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.Extensions.DependencyInjection;
     using System;
     using System.Linq;
-    using TicketStore.Data.Models;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.Extensions.DependencyInjection;
     using TicketStore.Common;
-
+    using TicketStore.Data.Models;
 
     public class TicketStoreDbContextSeeder
     {
-        public static void Seed(TicketStoreDbContext dbContext, IServiceProvider serviceProvider)
+        public static void Seed(TicketStoreDbContext ticketStoreDbContext, IServiceProvider serviceProvider)
         {
-            if (dbContext == null)
+            if (ticketStoreDbContext == null)
             {
-                throw new ArgumentNullException(nameof(dbContext));
+                throw new ArgumentNullException(nameof(ticketStoreDbContext));
             }
 
             if (serviceProvider == null)
@@ -23,14 +22,14 @@
             }
 
             var roleManager = serviceProvider.GetRequiredService<RoleManager<ApplicationRole>>();
-            Seed(dbContext, roleManager);
+            Seed(ticketStoreDbContext, roleManager);
         }
 
-        public static void Seed(TicketStoreDbContext dbContext, RoleManager<ApplicationRole> roleManager)
+        public static void Seed(TicketStoreDbContext ticketStoreDbContext, RoleManager<ApplicationRole> roleManager)
         {
-            if (dbContext == null)
+            if (ticketStoreDbContext == null)
             {
-                throw new ArgumentNullException(nameof(dbContext));
+                throw new ArgumentNullException(nameof(ticketStoreDbContext));
             }
 
             if (roleManager == null)

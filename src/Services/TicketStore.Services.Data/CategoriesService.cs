@@ -1,9 +1,9 @@
 ﻿namespace TicketStore.Services.Data
 {
-    using AutoMapper;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using AutoMapper;
     using TicketStore.Common.Mapping;
     using TicketStore.Data.Common.Repositories;
     using TicketStore.Data.Models;

@@ -18,11 +18,17 @@
             int? take = null);
 
         EventDetailsResponseModel GetEvetById(int id);
+
         Task<int> AddEvent(CreateEventRequestModel model);
+
         Task<EditEventResponseModel> EditEvent(int id, EditEventRequestModel model);
+
         Task DeleteEvent(int id);
+
         IEnumerable<EventListItem> GetEventsByCategoryId(int id);
+
         IEnumerable<TicketResponseModel> GetEvetTickets(int id);
+
         Expression<Func<Event, object>> GetSortOrderExpression(string sortOrder);
     }
 }
