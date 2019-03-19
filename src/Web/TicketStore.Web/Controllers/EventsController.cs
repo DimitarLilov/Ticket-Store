@@ -4,7 +4,9 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using System;
     using System.Collections.Generic;
+    using System.Linq.Expressions;
     using System.Threading.Tasks;
     using TicketStore.Data.Models;
     using TicketStore.Services.Data.Interfaces;
@@ -23,12 +25,24 @@
         }
 
         [HttpGet]
+        [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public ActionResult<IEnumerable<EventListItem>> Index(int page)
+        public ActionResult<IEnumerable<EventListItem>> Index(
+            int? page = null, 
+            int? pageSize = 10, 
+            string orderBy = null, 
+            string orderByDecending = null)
         {
-            var events = this.eventsService.GetAllEvents();
+            Expression<Func<Event, object>> orderByExpression = this.eventsService.GetSortOrderExpression(orderBy);
+            Expression<Func<Event, object>> orderByDecendingExpression = this.eventsService.GetSortOrderExpression(orderByDecending);
 
-            return Ok(events);
+            if (page != null && page != 0)
+            {
+                var skip = (page - 1) * pageSize;
+                return Ok(eventsService.GetAllEvents(null, orderByExpression, orderByDecendingExpression, skip, pageSize));
+            }
+
+            return Ok(eventsService.GetAllEvents(null, orderByExpression, orderByDecendingExpression));
         }
 
         [HttpGet("{id}")]

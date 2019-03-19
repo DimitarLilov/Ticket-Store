@@ -6,6 +6,7 @@ import { AccountRoutingModule } from './account.routes';
 
 import { ACCOUNT_COMPONENTS } from './index'
 
+
 @NgModule({
     imports: [
         CommonModule,
@@ -13,7 +14,6 @@ import { ACCOUNT_COMPONENTS } from './index'
 
         AccountRoutingModule
     ],
-
     declarations: [ACCOUNT_COMPONENTS]
 })
 

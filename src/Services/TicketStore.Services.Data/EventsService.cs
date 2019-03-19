@@ -56,6 +56,7 @@
         public IEnumerable<EventListItem> GetAllEvents(
             Expression<Func<Event,bool>> predicate = null,
             Expression<Func<Event,object>> orderBy = null,
+            Expression<Func<Event, object>> orderByDescending = null,
             int? skip = null,
             int? take = null)
         {
@@ -68,6 +69,10 @@
             if (orderBy != null)
             {
                 events = events.OrderBy(orderBy);
+            }
+            if (orderByDescending != null)
+            {
+                events = events.OrderByDescending(orderByDescending);
             }
             if (skip != null)
             {
@@ -96,6 +101,26 @@
         public IEnumerable<TicketResponseModel> GetEvetTickets(int id)
         {
             return this.GetEvetById(id).Tickets.ToList();
+        }
+
+        public Expression<Func<Event, object>> GetSortOrderExpression(string order)
+        {
+            if (order != null)
+            {
+                order = order.ToLower();
+            }
+
+            switch (order)
+            {
+                case "id":
+                    return e => e.Id;
+                case "date":
+                    return e => e.Date;
+                case "title":
+                    return e => e.Title;
+                default:
+                    return null;
+            }
         }
     }
 }

@@ -4,11 +4,11 @@ import { AuthNoGuardService } from './guards/auth-no-guard.service';
 import { AuthErrorsInterceptorService } from './http-interceptors/auth-errors-interceptor.service';
 import { AuthInterceptorService } from './http-interceptors/auth-interceptor.service';
 
-import { AuthService } from './auth.service';
 import { IdentityService } from './identity.service';
 import { RouterService } from './router.service';
 import { StorageService } from './storage.service';
 import { WindowRefService } from './window-ref.service';
+import { AuthService } from './auth.service';
 
 
 export * from './guards/auth-guard.service';

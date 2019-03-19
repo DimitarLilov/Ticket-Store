@@ -13,6 +13,7 @@
         IEnumerable<EventListItem> GetAllEvents(
             Expression<Func<Event, bool>> predicate = null,
             Expression<Func<Event, object>> orderBy = null,
+            Expression<Func<Event, object>> orderByDescending = null,
             int? skip = null,
             int? take = null);
 
@@ -22,5 +23,6 @@
         Task DeleteEvent(int id);
         IEnumerable<EventListItem> GetEventsByCategoryId(int id);
         IEnumerable<TicketResponseModel> GetEvetTickets(int id);
+        Expression<Func<Event, object>> GetSortOrderExpression(string sortOrder);
     }
 }

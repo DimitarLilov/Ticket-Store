@@ -4,8 +4,11 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using System;
     using System.Collections.Generic;
+    using System.Linq.Expressions;
     using System.Threading.Tasks;
+    using TicketStore.Data.Models;
     using TicketStore.Services.Data.Interfaces;
     using TicketStore.Web.Infrastructure.Extensions;
     using TicketStore.Web.Shared.Categories;
@@ -39,7 +42,12 @@
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
-        public ActionResult<CategoryDetailsResponseModel> Details(int id)
+        public ActionResult<CategoryDetailsResponseModel> Details(
+            int id,
+            int? page = null,
+            int? pageSize = 10,
+            string orderBy = null,
+            string orderByDecending = null)
         {
             var categoryName = this.categoriesService.GetCategoryNameById(id);
             if (string.IsNullOrEmpty(categoryName))
@@ -47,10 +55,21 @@
                 return this.NotFound();
             }
 
-            IEnumerable<EventListItem> events = this.eventsService.GetEventsByCategoryId(id);
+            var response = new CategoryDetailsResponseModel() { Name = categoryName };
 
-            var response = new CategoryDetailsResponseModel() { Name = categoryName, Events = events };
+            Expression<Func<Event, object>> orderByExpression = this.eventsService.GetSortOrderExpression(orderBy);
+            Expression<Func<Event, object>> orderByDecendingExpression = this.eventsService.GetSortOrderExpression(orderByDecending);
+            Expression<Func<Event, bool>> getEventsByCatecoryExpresiond = e => e.CategoryId == id;
 
+            if (page != null && page != 0)
+            {
+                var skip = (page - 1) * pageSize;
+                response.Events =  eventsService.GetAllEvents(getEventsByCatecoryExpresiond, orderByExpression, orderByDecendingExpression, skip, pageSize);
+                return Ok(response);
+            }
+
+            var events = eventsService.GetAllEvents(getEventsByCatecoryExpresiond, orderByExpression, orderByDecendingExpression);
+            response.Events = events;
             return Ok(response);
         }
 
