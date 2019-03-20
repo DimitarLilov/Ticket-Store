@@ -11,6 +11,9 @@
           <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
             <a class="nav-link text-dark" [routerLink]='["/"]'>Home</a>
           </li>
+          <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a class="nav-link text-dark" [routerLink]='["/events"]'>Events</a>
+            </li>
           <li class="nav-item" *ngIf="isUserAuthorized">
             <a *ngIf="userEmail" class="nav-link text-dark" routerLink="/user">Hello, {{firstName}}!</a>
           </li>

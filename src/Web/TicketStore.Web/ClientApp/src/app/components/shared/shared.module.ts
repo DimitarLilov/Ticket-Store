@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-import { SHARED_COMPONENT } from './index';
+import { SHARED_COMPONENTS } from './index';
 
 @NgModule({
     declarations: [
-        SHARED_COMPONENT
+        SHARED_COMPONENTS
       ],
       imports: [
         CommonModule,
         RouterModule
       ],
       exports: [
-        SHARED_COMPONENT
+        SHARED_COMPONENTS
       ]
 })
 

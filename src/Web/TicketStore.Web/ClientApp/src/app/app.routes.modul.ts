@@ -4,10 +4,10 @@ import { HomeComponent } from './components/home/home.component';
 
 
 
-
 export const APP_ROUTES: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: 'account', loadChildren: './components/account/account.module#AccountModule' }
+  { path: 'account', loadChildren: './components/account/account.module#AccountModule' },
+  { path: 'events', loadChildren: './components/event/event.module#EventModule' }
 ];
 
 @NgModule({

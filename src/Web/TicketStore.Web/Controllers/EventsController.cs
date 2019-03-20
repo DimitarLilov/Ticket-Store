@@ -13,6 +13,7 @@
     using TicketStore.Data.Models;
     using TicketStore.Services.Data.Interfaces;
     using TicketStore.Web.Infrastructure.Extensions;
+    using TicketStore.Web.Shared.Common;
     using TicketStore.Web.Shared.Events;
     using TicketStore.Web.Shared.Tickets;
 
@@ -28,22 +29,18 @@
         [HttpGet]
         [ProducesDefaultResponseType]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public ActionResult<IEnumerable<EventListItem>> Index(
-            int? page = null, 
-            int? pageSize = 10, 
-            string orderBy = null, 
-            string orderByDecending = null)
+        public ActionResult<IEnumerable<EventListItem>> Index([FromQuery]FilterResponseModel filter)
         {
-            Expression<Func<Event, object>> orderByExpression = this.eventsService.GetSortOrderExpression(orderBy);
-            Expression<Func<Event, object>> orderByDecendingExpression = this.eventsService.GetSortOrderExpression(orderByDecending);
+            Expression<Func<Event, object>> orderByExpression = this.eventsService.GetSortOrderExpression(filter.OrderBy);
+            Expression<Func<Event, object>> orderByDecendingExpression = this.eventsService.GetSortOrderExpression(filter.OrderByDecending);
 
-            if (page != null && page != 0)
+            if (filter.Page != null && filter.Page != 0)
             {
-                var skip = (page - 1) * pageSize;
-                return this.Ok(this.eventsService.GetAllEvents(null, orderByExpression, orderByDecendingExpression, skip, pageSize));
+                var skip = (filter.Page - 1) * filter.Limit;
+                return this.Ok(this.eventsService.GetAllEvents(null, orderByExpression, orderByDecendingExpression, skip, filter.Limit));
             }
 
-            return this.Ok(this.eventsService.GetAllEvents(null, orderByExpression, orderByDecendingExpression));
+            return this.Ok(this.eventsService.GetAllEvents(null, orderByExpression, orderByDecendingExpression, null, filter.Limit));
         }
 
         [HttpGet("{id}")]

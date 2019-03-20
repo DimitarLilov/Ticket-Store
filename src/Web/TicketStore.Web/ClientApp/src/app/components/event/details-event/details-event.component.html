@@ -1,0 +1,26 @@
+<div *ngIf="event">
+  <div class="card">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card-img-top" class="tab-content">
+            <img src="{{event.image}}" />
+          </div>
+        </div>
+        <div class="col-md-8 d-flex flex-column">
+          <h2 class="event-title">{{event.title}}</h2>
+          <a routerLink="/categories/{{event.category.id}}"  class="event-category">{{event.category.name}}</a>
+          <p>{{event.description}}</p>
+          <ul class="list-unstyled">
+            <li class="event-date">Date: <span>{{event.date | date:'fullDate'}}</span></li>
+            <li class="event-time">Time: <span>{{event.date | date:'mediumTime'}}</span></li>
+            <li class="event-location">Location : <span>{{event.town}} - {{event.location}}</span></li>
+          </ul>
+          <div class="action">
+            <button type="button" class="btn btn-lg btn-primary mt-auto">By Tickets</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

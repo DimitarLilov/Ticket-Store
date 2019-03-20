@@ -1,0 +1,21 @@
+.tab-content img {
+  width: 100%;
+}
+
+.card {
+  margin-top: 10px;
+  padding: 3em;
+  margin-bottom: 10px;
+}
+
+.event-title,
+.event-date,
+.event-location,
+.event-time,
+.event-category {
+  text-transform: UPPERCASE;
+  font-weight: bold;
+}
+a.event-category {
+    text-decoration: none;
+}

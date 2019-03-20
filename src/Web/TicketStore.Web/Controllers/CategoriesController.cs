@@ -14,6 +14,7 @@
     using TicketStore.Services.Data.Interfaces;
     using TicketStore.Web.Infrastructure.Extensions;
     using TicketStore.Web.Shared.Categories;
+    using TicketStore.Web.Shared.Common;
 
     public class CategoriesController : ApiController
     {
@@ -42,12 +43,7 @@
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
-        public ActionResult<CategoryDetailsResponseModel> Details(
-            int id,
-            int? page = null,
-            int? pageSize = 10,
-            string orderBy = null,
-            string orderByDecending = null)
+        public ActionResult<CategoryDetailsResponseModel> Details(int id, [FromQuery]FilterResponseModel filter)
         {
             var categoryName = this.categoriesService.GetCategoryNameById(id);
             if (string.IsNullOrEmpty(categoryName))
@@ -57,18 +53,18 @@
 
             var response = new CategoryDetailsResponseModel() { Name = categoryName };
 
-            Expression<Func<Event, object>> orderByExpression = this.eventsService.GetSortOrderExpression(orderBy);
-            Expression<Func<Event, object>> orderByDecendingExpression = this.eventsService.GetSortOrderExpression(orderByDecending);
+            Expression<Func<Event, object>> orderByExpression = this.eventsService.GetSortOrderExpression(filter.OrderBy);
+            Expression<Func<Event, object>> orderByDecendingExpression = this.eventsService.GetSortOrderExpression(filter.OrderByDecending);
             Expression<Func<Event, bool>> getEventsByCatecoryExpresiond = e => e.CategoryId == id;
 
-            if (page != null && page != 0)
+            if (filter.Page != null && filter.Page != 0)
             {
-                var skip = (page - 1) * pageSize;
-                response.Events = this.eventsService.GetAllEvents(getEventsByCatecoryExpresiond, orderByExpression, orderByDecendingExpression, skip, pageSize);
+                var skip = (filter.Page - 1) * filter.Limit;
+                response.Events = this.eventsService.GetAllEvents(getEventsByCatecoryExpresiond, orderByExpression, orderByDecendingExpression, skip, filter.Limit);
                 return this.Ok(response);
             }
 
-            var events = this.eventsService.GetAllEvents(getEventsByCatecoryExpresiond, orderByExpression, orderByDecendingExpression);
+            var events = this.eventsService.GetAllEvents(getEventsByCatecoryExpresiond, orderByExpression, orderByDecendingExpression, null, filter.Limit);
             response.Events = events;
             return this.Ok(response);
         }

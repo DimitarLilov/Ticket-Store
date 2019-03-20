@@ -9,6 +9,7 @@ import { RouterService } from './router.service';
 import { StorageService } from './storage.service';
 import { WindowRefService } from './window-ref.service';
 import { AuthService } from './auth.service';
+import { EventService } from './data/event.service';
 
 
 export * from './guards/auth-guard.service';
@@ -22,6 +23,7 @@ export * from './identity.service';
 export * from './router.service';
 export * from './storage.service';
 export * from './window-ref.service';
+export * from './data/event.service';
 
 export const APP_SERVICES = [
     AuthGuardService,
@@ -34,5 +36,6 @@ export const APP_SERVICES = [
     IdentityService,
     RouterService,
     StorageService,
-    WindowRefService
+    WindowRefService,
+    EventService
 ];
