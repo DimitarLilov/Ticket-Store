@@ -1,0 +1,17 @@
+.last {
+  width:730px !important;
+  height:500px !important;
+}
+
+.top-event {
+  width: 400px;
+  height: 499px;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(51, 51, 51);
+  transition: transform .5s;
+  margin-bottom: 10px;
+  height: 583.750px;
+}

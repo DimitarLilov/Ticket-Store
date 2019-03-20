@@ -3,16 +3,20 @@ import { HttpClient } from '@angular/common/http';
 
 import { Event, EventDetails } from '../../domain/index';
 import { map } from 'rxjs/operators';
+import { HomeEvent } from 'src/app/domain/home/homeEvent';
 
 @Injectable()
 export class EventService {
     public static readonly URLS: any = {
         GET: 'api/events/',
+        GET_LAST_THREE_EVENTS: 'api/events?&orderByDecending=id&limit=3',
+        GET_TOP_EVENTS: 'api/events?&orderBy=id&limit=1'
     };
 
     constructor(
         private httpClient: HttpClient)
     { }
+
 
     public getAllEvents() {
         return this.httpClient.get<Event[]>(EventService.URLS.GET)
@@ -20,5 +24,14 @@ export class EventService {
 
     public getEventsById(id: string){
         return this.httpClient.get<EventDetails>(EventService.URLS.GET + id)
+    }
+    
+    public getLastThreeEvents() {
+        return this.httpClient.get<HomeEvent[]>(EventService.URLS.GET_LAST_THREE_EVENTS)
+    }
+
+    public getTopEvent()
+    {
+        return this.httpClient.get<HomeEvent>(EventService.URLS.GET_TOP_EVENTS)
     }
 }

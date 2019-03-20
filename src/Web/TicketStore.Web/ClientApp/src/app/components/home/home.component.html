@@ -1,1 +1,20 @@
-<h1>Hello, world!</h1>
+<div class="row">
+  <div class="col-md-8">
+    <h1>Last Events</h1>
+    <ngb-carousel *ngIf="lastThreeEvents">
+      <ng-template *ngFor="let event of lastThreeEvents" ngbSlide>
+        <img [src]="event.image" alt="{{event.title}}" class="last">
+        <div class="carousel-caption">
+          <h2> <a routerLink="events/{{event.id}}">{{event.title}}</a></h2>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+  <div class="col-md-4" *ngIf="topEvent">
+    <h1>TOP</h1>
+    <a routerLink="events/{{topEvent.id}}">
+      <img alt="{{topEvent.title}}" class="top-event" src="{{topEvent.image}}">
+    </a>
+  </div>
+</div>
+<br>
