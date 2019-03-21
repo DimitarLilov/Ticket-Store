@@ -1,5 +1,7 @@
 import { Component ,OnInit } from '@angular/core';
-import { AuthService, IdentityService } from '../../../services';
+import { AuthService, IdentityService, CartService } from '../../../services';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { CartItem } from 'src/app/domain';
 
 @Component({
   selector: 'app-header',
@@ -7,8 +9,11 @@ import { AuthService, IdentityService } from '../../../services';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-
-  constructor(private authService: AuthService, private identityService: IdentityService) {
+  faShoppingCart = faShoppingCart;
+  cartItems = 0;
+  constructor(private authService: AuthService,
+    private identityService: IdentityService,
+    private cartService: CartService) {
 }
 
 public isUserAuthorized: boolean = false;
@@ -36,7 +41,13 @@ ngOnInit(): void {
         this.isUserAuthorized = isAuthorized;
         this.userEmail = isAuthorized ? this.identityService.getEmail() : null;
         this.firstName = isAuthorized ? this.identityService.getFirstName() : null;
+        
     });
+    this.cartService.isCart$.subscribe(
+      (isCart : boolean) => {
+        this.cartItems = isCart ? this.cartService.getCounOfCartElements() : 0;
+      }
+    )
 }
 
 

@@ -7,24 +7,33 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]='{"show": isExpanded}'>
-        <ul class="navbar-nav flex-grow">
+        <ul class="navbar-nav mr-auto">
           <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
             <a class="nav-link text-dark" [routerLink]='["/"]'>Home</a>
           </li>
           <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a class="nav-link text-dark" [routerLink]='["/events"]'>Events</a>
-            </li>
-          <li class="nav-item" *ngIf="isUserAuthorized">
-            <a *ngIf="userEmail" class="nav-link text-dark" routerLink="/user">Hello, {{firstName}}!</a>
+            <a class="nav-link text-dark" [routerLink]='["/events"]'>Events</a>
           </li>
-          <li class="nav-item" *ngIf="isUserAuthorized">
-            <button (click)="logout()" class="btn btn-link navbar-btn navbar-link">Log out</button>
+        </ul>
+      </div>
+      <div class="collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]='{"show": isExpanded}'>
+        <ul class="navbar-nav">
+            <li *ngIf="isUserAuthorized" class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+                <a [routerLink]='["/cart"]' class="nav-link text-dark">
+                  <span><fa-icon [icon]="faShoppingCart"></fa-icon></span>
+                  <span *ngIf="cartItems" id="cart-badge" class="badge badge-danger ml-2">{{cartItems}}</span>
+              </a>
+              </li>
+          <li *ngIf="isUserAuthorized" class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+            <a *ngIf="firstName" class="nav-link text-dark" [routerLink]='["/user"]'>Hello, {{firstName}}!</a>
           </li>
-
-          <li class="nav-item" *ngIf="!isUserAuthorized">
+          <li *ngIf="isUserAuthorized" class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+            <button (click)="logout()" class="btn btn-link nav-link text-dark">Log out</button>
+          </li>
+          <li *ngIf="!isUserAuthorized" class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
             <a class="nav-link text-dark" [routerLink]='["/account/register"]'>Register</a>
           </li>
-          <li class="nav-item" *ngIf="!isUserAuthorized">
+          <li *ngIf="!isUserAuthorized" class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
             <a class="nav-link text-dark" [routerLink]='["/account/login"]'>Log in</a>
           </li>
         </ul>

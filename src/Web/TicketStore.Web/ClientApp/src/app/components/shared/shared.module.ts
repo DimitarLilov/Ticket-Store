@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 import { SHARED_COMPONENTS } from './index';
 
@@ -10,7 +12,8 @@ import { SHARED_COMPONENTS } from './index';
       ],
       imports: [
         CommonModule,
-        RouterModule
+        RouterModule,
+        FontAwesomeModule
       ],
       exports: [
         SHARED_COMPONENTS

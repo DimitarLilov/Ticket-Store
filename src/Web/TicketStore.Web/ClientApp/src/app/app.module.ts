@@ -3,12 +3,15 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app.routes.modul';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { SharedModule } from './components/shared/shared.module'
+import  {NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SharedModule } from './components/shared/shared.module';
+
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { APP_SERVICES, AuthInterceptorService, AuthErrorsInterceptorService } from './services';
+import { EeventTicketsComponent } from './components/event/event-tickets/event-tickets.component';
+import { EventModule } from './components/event/event.module';
 
 
 
@@ -16,15 +19,17 @@ import { APP_SERVICES, AuthInterceptorService, AuthErrorsInterceptorService } fr
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     SharedModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule ,
+    EventModule   
   ],
+  
   providers: [
     APP_SERVICES,
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },

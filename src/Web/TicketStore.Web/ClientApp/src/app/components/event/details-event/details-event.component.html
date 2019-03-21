@@ -17,7 +17,7 @@
             <li class="event-location">Location : <span>{{event.town}} - {{event.location}}</span></li>
           </ul>
           <div class="action">
-            <button type="button" class="btn btn-lg btn-primary mt-auto">By Tickets</button>
+              <button *ngIf="event.tickets.length"  class="btn btn-lg btn-outline-primary" (click)="open()">By Tickets</button>
           </div>
         </div>
       </div>

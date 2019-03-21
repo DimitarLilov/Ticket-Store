@@ -9,6 +9,7 @@ import { IdentityService } from './identity.service';
 
 import { UserLogin, UserRegister } from '../domain/index';
 import { RouterService } from './router.service';
+import { CartService } from './data/cart.service';
 
 @Injectable()
 export class AuthService {
@@ -20,6 +21,7 @@ export class AuthService {
     constructor(
         private httpClient: HttpClient,
         private identityService: IdentityService,
+        private cartService: CartService,
         private routerService: RouterService,)
     { }
 
@@ -55,6 +57,7 @@ export class AuthService {
                 this.identityService.setRoles(data['roles']);
                 this.identityService.setEmail(userLogin.email);
                 this.identityService.setFirstName(data['name'])
+                this.cartService.setCart([]);
 
                 this.isAuthorizedSubject.next(true);
 

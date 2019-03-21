@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { EventService } from 'src/app/services';
 import { EventDetails } from 'src/app/domain';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { EeventTicketsComponent } from '../event-tickets/event-tickets.component';
 
 @Component({
     selector: 'app-details-event',
@@ -15,6 +17,7 @@ export class DetailsEventComponent implements OnInit {
   constructor(
       private eventService : EventService,
       private route : ActivatedRoute,
+      private modalService: NgbModal
   ) { }
 
   ngOnInit() {
@@ -22,6 +25,11 @@ export class DetailsEventComponent implements OnInit {
     this.eventService.getEventsById(this.id).subscribe((data) => {
             this.event = data;
         })
+  }
+
+  open() {
+    const modalRef = this.modalService.open(EeventTicketsComponent, { size: 'lg' });
+    modalRef.componentInstance.tickets = this.event.tickets;
   }
 }
 

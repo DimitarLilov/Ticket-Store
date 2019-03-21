@@ -1,4 +1,5 @@
 import { Category } from "./category";
+import { Ticket } from "./tickets/ticket";
 
 export class EventDetails {
     public id : number;
@@ -16,4 +17,6 @@ export class EventDetails {
     public description: string;
 
     public category : Category
+
+    public tickets : Ticket[]
 }

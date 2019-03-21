@@ -1,0 +1,33 @@
+<div class="modal-lg">
+  <div class="modal-header">
+    <h4 class="modal-title">Hi there!</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <ngb-accordion [closeOthers]="true">
+      <div *ngFor="let ticket of tickets; let i = index">
+        <ngb-panel id="static-{{ticket.id}}">
+          <ng-template ngbPanelTitle>
+            <span>{{ticket.name}}</span>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            {{ticket.price}} - {{ticket.quantity}}
+            <form #f="ngForm" (ngSubmit)="getTickets(i)">
+              <div class="form-group" id="{{ticket.id}}">
+                <label for="quantity">Quantity</label>
+                <!-- <input [formControlName]="ticket.quantity" ngDefaultControl quantity placeholder="0"> -->
+                <input type="number" [(ngModel)]="quantity" id="quantity-{{ticket.id}}" name="quantity" min="1" max="{{ticket.quantity}}" class="form-control col-md-1" placeholder="1">
+              </div>
+              <div class="action">
+                  <button class="btn btn-lg btn-outline-success" [disabled]="f.invalid" type="submit">Add to cart</button>
+                </div>
+            </form>
+          </ng-template>
+        </ngb-panel>
+      </div>
+    </ngb-accordion>
+  </div>
+
+</div>

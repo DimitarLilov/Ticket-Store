@@ -16,3 +16,18 @@ html {
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
+.blue {
+  color: blue;
+}
+
+#cart-badge{
+      z-index: 4;
+      right: 15px;
+      bottom: 10px;
+      font-size: 80%;
+      font-weight: 700;
+      position: relative;
+      min-width: 18px;
+      color: #fff;
+      border-radius: 9px;
+}
