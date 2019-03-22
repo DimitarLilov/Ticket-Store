@@ -1,5 +1,5 @@
-import { Category } from "./category";
-import { Ticket } from "./tickets/ticket";
+import { Category } from "../category";
+import { Ticket } from "../tickets/ticket";
 
 export class EventDetails {
     public id : number;

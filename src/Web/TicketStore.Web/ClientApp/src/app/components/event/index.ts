@@ -1,9 +1,9 @@
-import { AllEventComponent } from './all-event/all-event.component';
-import { DetailsEventComponent } from './details-event/details-event.component';
+import { AllEventComponent } from './event-list/event-list.component';
+import { DetailsEventComponent } from './event-details/event-details.component';
 import { EeventTicketsComponent } from './event-tickets/event-tickets.component';
 
-export * from './all-event/all-event.component';
-export * from './details-event/details-event.component';
+export * from './event-list/event-list.component';
+export * from './event-details/event-details.component';
 export * from './event-tickets/event-tickets.component';
 
 export const EVENT_COMPONTNTS = [

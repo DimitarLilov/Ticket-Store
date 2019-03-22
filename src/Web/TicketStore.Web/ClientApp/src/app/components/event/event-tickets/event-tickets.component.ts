@@ -15,11 +15,11 @@ export class EeventTicketsComponent {
   tickets: Ticket[];
   quantity : number = 1;
 
-  constructor(public activeModal: NgbActiveModal,private cartService : CartService,) {
+  constructor(public activeModal: NgbActiveModal, private cartService : CartService) {
   }
 
-  getTickets(index: number){
-    this.cartService.addToCart({'id': this.tickets[index].id, 'qty' : this.quantity})
-    this.activeModal.dismiss('Cross click')
+  getTickets(index: number): void{
+    this.cartService.addToCart({'id': this.tickets[index].id, 'qty' : this.quantity});
+    this.activeModal.dismiss('Cross click');
   }
 }

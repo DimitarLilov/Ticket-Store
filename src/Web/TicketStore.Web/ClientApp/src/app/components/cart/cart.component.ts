@@ -24,17 +24,17 @@ export class CartComponent{
     )
   }
 
-  change(index: number){
+  change(index: number): void{
     let ticket = this.tickets[index];
     this.cartService.changeTicketQty({ 'id':ticket.id, "qty": ticket.customerQuantity})
   }
 
-  remove(index: number){
+  remove(index: number): void{
     let ticket = this.tickets[index];
     this.cartService.removeCartItem({'id' : ticket.id, 'qty': ticket.customerQuantity})
   }
 
-  sumPrice(){
+  sumPrice() :number{
     return this.tickets
     .reduce((sum : number, ticket : TicketDetails) => sum += (ticket.price * ticket.customerQuantity), 0);
   };

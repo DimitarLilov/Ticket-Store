@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { StorageService } from '../storage.service';
 import { CartItem } from 'src/app/domain';
-import { RouterService } from '../router.service';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
@@ -9,18 +8,19 @@ export class CartService {
   
     private static readonly USER_CART = 'IDENTITY_CART';
 
-    constructor(private storageService: StorageService, private routerService: RouterService) { }
+    constructor(private storageService: StorageService) { }
 
     private isCartSubject = new BehaviorSubject<boolean>(this.isCart());
 
     public isCart$ = this.isCartSubject.asObservable();
 
     private isCartRemoveItemSubject = new BehaviorSubject<boolean>(false);
+
     public isCartRemove$ = this.isCartRemoveItemSubject.asObservable();
     
     private items: CartItem[] = null;
 
-    public getCounOfCartElements(){
+    public getCounOfCartElements(): number{
         if (!this.items) {
             this.items = this.getCart()
         }
@@ -42,7 +42,7 @@ export class CartService {
         return this.items;
     }
 
-    public addToCart(ticket : CartItem){
+    public addToCart(ticket : CartItem): void{
         this.items = this.getCart() || null;
         if(this.items.find(t => t.id == ticket.id)){
             this.items.find(t => t.id == ticket.id).qty += ticket.qty;
@@ -55,7 +55,7 @@ export class CartService {
         this.isCartSubject.next(true);
     }
 
-    public changeTicketQty(ticket : CartItem){
+    public changeTicketQty(ticket : CartItem): void{
         if(this.items.find(t => t.id == ticket.id)){
             this.items.find(t => t.id == ticket.id).qty = ticket.qty; 
         }
@@ -63,8 +63,9 @@ export class CartService {
         this.isCartSubject.next(true);
     }
 
-    public removeCartItem(ticket : CartItem){
-        this.items = this.items.filter(t => t.id != ticket.id)
+    public removeCartItem(ticket : CartItem): void{
+        this.items = this.items.filter(t => t.id != ticket.id);
+        console.log(this.items.filter(t => t.id != ticket.id));
         this.setCart(this.items)
         this.isCartSubject.next(true);
         this.isCartRemoveItemSubject.next(true)

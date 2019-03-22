@@ -6,28 +6,29 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EeventTicketsComponent } from '../event-tickets/event-tickets.component';
 
 @Component({
-    selector: 'app-details-event',
-    templateUrl: './details-event.component.html',
-    styleUrls: ['./details-event.component.css']
+    selector: 'app-event-details',
+    templateUrl: './event-details.component.html',
+    styleUrls: ['./event-details.component.css']
 })
+
 export class DetailsEventComponent implements OnInit {
     event: EventDetails;
     id : string;
 
   constructor(
-      private eventService : EventService,
-      private route : ActivatedRoute,
-      private modalService: NgbModal
-  ) { }
+    private eventService : EventService,
+    private route : ActivatedRoute,
+    private modalService: NgbModal
+    ) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
     this.eventService.getEventsById(this.id).subscribe((data) => {
-            this.event = data;
-        })
+      this.event = data;
+    });
   }
 
-  open() {
+  open(): void {
     const modalRef = this.modalService.open(EeventTicketsComponent, { size: 'lg' });
     modalRef.componentInstance.tickets = this.event.tickets;
   }
