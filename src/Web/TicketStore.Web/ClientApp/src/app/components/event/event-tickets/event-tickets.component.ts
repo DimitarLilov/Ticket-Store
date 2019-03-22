@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Ticket } from 'src/app/domain/tickets/ticket';
 import { CartService } from 'src/app/services';
+import { CartItem } from 'src/app/domain';
 
 @Component({
   selector: 'app-event-tickets',
@@ -18,7 +19,7 @@ export class EeventTicketsComponent {
   }
 
   getTickets(index: number){
-    this.cartService.addToCart(this.tickets[index], this.quantity)
+    this.cartService.addToCart({'id': this.tickets[index].id, 'qty' : this.quantity})
     this.activeModal.dismiss('Cross click')
   }
 }

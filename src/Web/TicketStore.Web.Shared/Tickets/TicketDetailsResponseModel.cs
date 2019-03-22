@@ -10,6 +10,6 @@
 
         public int Quantity { get; set; }
 
-        public EventDetailsResponseModel Event { get; set; }
+        public EventListItem Event { get; set; }
     }
 }

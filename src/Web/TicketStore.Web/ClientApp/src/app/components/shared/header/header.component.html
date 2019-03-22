@@ -18,7 +18,7 @@
       </div>
       <div class="collapse d-sm-inline-flex flex-sm-row-reverse" [ngClass]='{"show": isExpanded}'>
         <ul class="navbar-nav">
-            <li *ngIf="isUserAuthorized" class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+            <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
                 <a [routerLink]='["/cart"]' class="nav-link text-dark">
                   <span><fa-icon [icon]="faShoppingCart"></fa-icon></span>
                   <span *ngIf="cartItems" id="cart-badge" class="badge badge-danger ml-2">{{cartItems}}</span>

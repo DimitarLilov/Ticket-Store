@@ -57,7 +57,6 @@ export class AuthService {
                 this.identityService.setRoles(data['roles']);
                 this.identityService.setEmail(userLogin.email);
                 this.identityService.setFirstName(data['name'])
-                this.cartService.setCart([]);
 
                 this.isAuthorizedSubject.next(true);
 

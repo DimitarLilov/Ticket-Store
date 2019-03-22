@@ -11,6 +11,7 @@ import { WindowRefService } from './window-ref.service';
 import { AuthService } from './auth.service';
 import { EventService } from './data/event.service';
 import { CartService } from './data/cart.service'
+import { TicketService } from './data/ticket.service';
 
 
 export * from './guards/auth-guard.service';
@@ -26,6 +27,7 @@ export * from './storage.service';
 export * from './window-ref.service';
 export * from './data/event.service';
 export * from './data/cart.service';
+export * from './data/ticket.service';
 
 export const APP_SERVICES = [
     AuthGuardService,
@@ -40,5 +42,6 @@ export const APP_SERVICES = [
     StorageService,
     WindowRefService,
     EventService,
-    CartService
+    CartService,
+    TicketService
 ];

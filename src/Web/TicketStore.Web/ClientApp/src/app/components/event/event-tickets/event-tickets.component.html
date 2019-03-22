@@ -17,8 +17,7 @@
             <form #f="ngForm" (ngSubmit)="getTickets(i)">
               <div class="form-group" id="{{ticket.id}}">
                 <label for="quantity">Quantity</label>
-                <!-- <input [formControlName]="ticket.quantity" ngDefaultControl quantity placeholder="0"> -->
-                <input type="number" [(ngModel)]="quantity" id="quantity-{{ticket.id}}" name="quantity" min="1" max="{{ticket.quantity}}" class="form-control col-md-1" placeholder="1">
+                <input type="number" [(ngModel)]="quantity" id="quantity-{{ticket.id}}" name="quantity" min="1" max="10" class="form-control col-md-2" placeholder="1">
               </div>
               <div class="action">
                   <button class="btn btn-lg btn-outline-success" [disabled]="f.invalid" type="submit">Add to cart</button>

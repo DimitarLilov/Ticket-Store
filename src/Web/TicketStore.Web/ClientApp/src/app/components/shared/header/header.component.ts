@@ -1,7 +1,6 @@
 import { Component ,OnInit } from '@angular/core';
 import { AuthService, IdentityService, CartService } from '../../../services';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { CartItem } from 'src/app/domain';
 
 @Component({
   selector: 'app-header',
@@ -16,11 +15,11 @@ export class HeaderComponent {
     private cartService: CartService) {
 }
 
+public isAdmin : boolean = false;
 public isUserAuthorized: boolean = false;
 public userEmail: string = null;
 public firstName: string = null;
 isExpanded = false;
-public isAdmin : boolean = false;
 
 public logout(): void {
     this.authService.logout();
