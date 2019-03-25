@@ -12,10 +12,12 @@ import { AuthService } from './auth.service';
 import { EventService } from './data/event.service';
 import { CartService } from './data/cart.service'
 import { TicketService } from './data/ticket.service';
+import { AdminGuard } from './guards/admin-guard.service';
 
 
 export * from './guards/auth-guard.service';
 export * from './guards/auth-no-guard.service';
+export * from './guards/admin-guard.service';
 
 export * from './http-interceptors/auth-errors-interceptor.service';
 export * from './http-interceptors/auth-interceptor.service';
@@ -29,9 +31,12 @@ export * from './data/event.service';
 export * from './data/cart.service';
 export * from './data/ticket.service';
 
+
+
 export const APP_SERVICES = [
     AuthGuardService,
     AuthNoGuardService,
+    AdminGuard,
 
     AuthErrorsInterceptorService,
     AuthInterceptorService,

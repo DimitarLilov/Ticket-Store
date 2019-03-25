@@ -14,6 +14,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { EventModule } from './components/event/event.module';
 import { CartComponent } from './components/cart/cart.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CartComponent } from './components/cart/cart.component';
     SharedModule,
     AppRoutingModule,
     FormsModule,
-    NgbModule ,
+    NgbModule,
+    FontAwesomeModule,
     EventModule   
   ],
   

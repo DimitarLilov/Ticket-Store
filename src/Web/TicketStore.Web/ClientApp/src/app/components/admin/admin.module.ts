@@ -1,26 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { EVENT_COMPONTNTS } from './index'
-import { EventRoutingModule } from './event.routes';
-import { EeventTicketsComponent } from './event-tickets/event-tickets.component';
+import { ADMIN_COMPONTNTS } from './index'
+import { AdminRoutingModule } from './admin.routes';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
     declarations: [
-        EVENT_COMPONTNTS,
+        ADMIN_COMPONTNTS,
     ],
     imports: [
         FormsModule,
         CommonModule,
-        EventRoutingModule,
         NgbModule,
+        AdminRoutingModule,
+        FontAwesomeModule
     ],
-    entryComponents: [EeventTicketsComponent],
     exports: [
-        EVENT_COMPONTNTS
+        ADMIN_COMPONTNTS
     ]
 })
 
-export class EventModule {}
+export class AdminModule {}

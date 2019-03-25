@@ -78,4 +78,14 @@ export class AuthService {
     public isAuthorized(): boolean {
         return this.identityService.getToken() !== null;
     }
+
+    public isAdmin(): boolean {
+        if(this.identityService.getRoles() == null)
+        {
+            return false;
+        }
+        else{
+            return this.identityService.getRoles().includes("Administrator")
+        }
+    }
 }
