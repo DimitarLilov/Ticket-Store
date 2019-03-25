@@ -7,6 +7,7 @@ import { HomeEvent } from 'src/app/domain/home/homeEvent';
 
 @Injectable()
 export class EventService {
+    
     public static readonly URLS: any = {
         EVENTS: 'api/events/',
         GET_LAST_THREE_EVENTS: 'api/events?&orderByDecending=id&limit=3',
@@ -37,5 +38,9 @@ export class EventService {
 
     public createEvent(body : EventCreate){
         return this.httpClient.post(EventService.URLS.EVENTS,body)
+    }
+
+    editEvent(id: string, body: EventDetails) {
+        return this.httpClient.put(EventService.URLS.EVENTS + id,body)
     }
 }

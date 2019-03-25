@@ -4,16 +4,16 @@
       <div class="row">
         <div class="col-md-4">
           <div class="card-img-top" class="tab-content">
-            <img src="{{eventCreateBindingModel.image}}" />
+            <img src="{{eventEditBindingModel.image}}" />
           </div>
         </div>
         <div class="col-md-8 d-flex flex-column">
-          <form #f="ngForm" (ngSubmit)="create()">
+          <form #f="ngForm" (ngSubmit)="edit()">
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="title">Title</label>
-                  <input type="text" id="title" name="title" [(ngModel)]="eventCreateBindingModel.title"
+                  <input type="text" id="title" name="title" [(ngModel)]="eventEditBindingModel.title"
                     class="form-control">
                 </div>
               </div>
@@ -22,7 +22,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="image">Poster</label>
-                  <input required type="text" id="image" name="image" [(ngModel)]="eventCreateBindingModel.image"
+                  <input required type="text" id="image" name="image" [(ngModel)]="eventEditBindingModel.image"
                     class="form-control">
                 </div>
               </div>
@@ -32,7 +32,7 @@
                 <div class="form-group">
                   <label for="location">Location</label>
                   <input required type="text" id="location" name="location"
-                    [(ngModel)]="eventCreateBindingModel.location" class="form-control">
+                    [(ngModel)]="eventEditBindingModel.location" class="form-control">
                 </div>
               </div>
             </div>
@@ -41,7 +41,7 @@
                       <div class="form-group">
                         <label for="categoryId">category</label>
                         <input required type="number" id="categoryId" name="categoryId"
-                          [(ngModel)]="eventCreateBindingModel.categoryId" class="form-control">
+                          [(ngModel)]="eventEditBindingModel.categoryId" class="form-control">
                       </div>
                     </div>
                   </div>
@@ -49,7 +49,7 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="town">Town</label>
-                  <input required type="text" id="town" name="town" [(ngModel)]="eventCreateBindingModel.town"
+                  <input required type="text" id="town" name="town" [(ngModel)]="eventEditBindingModel.town"
                     class="form-control">
                 </div>
               </div>
@@ -82,12 +82,12 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <textarea required type="text" id="description" class="form-control" name="description"
-                    [(ngModel)]="eventCreateBindingModel.description" rows="6"></textarea>
+                    [(ngModel)]="eventEditBindingModel.description" rows="6"></textarea>
                 </div>
               </div>
             </div>
             
-            <button class="btn btn-primary" [disabled]="f.invalid" type="submit">Create</button>
+            <button class="btn btn-primary" [disabled]="f.invalid" type="submit">Edit</button>
           </form>
         </div>
       </div>
