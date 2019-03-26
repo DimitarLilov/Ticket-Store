@@ -20,6 +20,7 @@ export class EventCreateComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   create() {

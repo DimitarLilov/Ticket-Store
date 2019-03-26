@@ -1,3 +1,5 @@
+import { Category } from "../category/category";
+
 export class EventCreate {
     public title: string;
 
@@ -11,5 +13,5 @@ export class EventCreate {
 
     public description: string;
 
-    public categoryId : number
+    public category : Category[]
 }

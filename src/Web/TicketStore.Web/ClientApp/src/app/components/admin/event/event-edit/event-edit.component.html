@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="eventEditBindingModel">
   <div class="card">
     <div class="container">
       <div class="row">
@@ -31,20 +31,20 @@
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="location">Location</label>
-                  <input required type="text" id="location" name="location"
-                    [(ngModel)]="eventEditBindingModel.location" class="form-control">
+                  <input required type="text" id="location" name="location" [(ngModel)]="eventEditBindingModel.location"
+                    class="form-control">
                 </div>
               </div>
             </div>
             <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="categoryId">category</label>
-                        <input required type="number" id="categoryId" name="categoryId"
-                          [(ngModel)]="eventEditBindingModel.categoryId" class="form-control">
-                      </div>
-                    </div>
-                  </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="categoryId">category</label>
+                  <input required type="number" id="categoryId" name="categoryId"
+                    [(ngModel)]="eventEditBindingModel.categoryId" class="form-control">
+                </div>
+              </div>
+            </div>
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
@@ -59,8 +59,8 @@
                 <div class="form-group">
                   <label for="date">Date</label>
                   <div class="input-group">
-                    <input class="form-control" required placeholder="yyyy-mm-dd" name="dp"
-                      [(ngModel)]="date" ngbDatepicker #d="ngbDatepicker">
+                    <input class="form-control" required placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="date"
+                      ngbDatepicker #d="ngbDatepicker">
                     <div class="input-group-append">
                       <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
                         <fa-icon [icon]="faCalendar"></fa-icon>
@@ -86,7 +86,6 @@
                 </div>
               </div>
             </div>
-            
             <button class="btn btn-primary" [disabled]="f.invalid" type="submit">Edit</button>
           </form>
         </div>

@@ -5,16 +5,17 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app.routes.modul';
 import  {NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedModule } from './components/shared/shared.module';
+
 
 import { APP_SERVICES, AuthInterceptorService, AuthErrorsInterceptorService } from './services';
 import { MultiplyPipe } from './pipes/multiply.pipe';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import { EventModule } from './components/event/event.module';
 import { CartComponent } from './components/cart/cart.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +32,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FormsModule,
     NgbModule,
     FontAwesomeModule,
-    EventModule   
   ],
   
   providers: [

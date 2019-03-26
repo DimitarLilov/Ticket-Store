@@ -1,5 +1,6 @@
 ﻿import { AuthGuardService } from './guards/auth-guard.service';
 import { AuthNoGuardService } from './guards/auth-no-guard.service';
+import { AdminGuard } from './guards/admin-guard.service';
 
 import { AuthErrorsInterceptorService } from './http-interceptors/auth-errors-interceptor.service';
 import { AuthInterceptorService } from './http-interceptors/auth-interceptor.service';
@@ -9,10 +10,11 @@ import { RouterService } from './router.service';
 import { StorageService } from './storage.service';
 import { WindowRefService } from './window-ref.service';
 import { AuthService } from './auth.service';
+
 import { EventService } from './data/event.service';
 import { CartService } from './data/cart.service'
 import { TicketService } from './data/ticket.service';
-import { AdminGuard } from './guards/admin-guard.service';
+import { CategoryService } from './data/category.service';
 
 
 export * from './guards/auth-guard.service';
@@ -30,6 +32,7 @@ export * from './window-ref.service';
 export * from './data/event.service';
 export * from './data/cart.service';
 export * from './data/ticket.service';
+export * from './data/category.service';
 
 
 
@@ -48,5 +51,6 @@ export const APP_SERVICES = [
     WindowRefService,
     EventService,
     CartService,
-    TicketService
+    TicketService,
+    CategoryService
 ];

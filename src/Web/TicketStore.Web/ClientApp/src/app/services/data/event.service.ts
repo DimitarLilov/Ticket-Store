@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Event, EventDetails, EventCreate } from '../../domain/index';
-import { map } from 'rxjs/operators';
-import { HomeEvent } from 'src/app/domain/home/homeEvent';
+import { Event, EventDetails, EventCreate, HomeEvent } from '../../domain/index';
+
 
 @Injectable()
 export class EventService {

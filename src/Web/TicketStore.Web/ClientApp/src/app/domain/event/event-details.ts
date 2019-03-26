@@ -1,4 +1,4 @@
-import { Category } from "../category";
+import { Category } from "../category/category";
 import { Ticket } from "../tickets/ticket";
 
 export class EventDetails {
