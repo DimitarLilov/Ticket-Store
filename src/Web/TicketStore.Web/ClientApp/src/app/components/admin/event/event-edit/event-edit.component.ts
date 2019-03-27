@@ -40,7 +40,7 @@ export class EventEditComponent implements OnInit {
     this.eventEditBindingModel.date = `${this.date.year}/${this.date.month}/${this.date.day} ${this.time.hour}:${this.time.minute}:${this.time.second}` 
     this.eventService.editEvent(this.id, this.eventEditBindingModel)
       .subscribe((data) => {
-        this.routerService.navigateByUrl("events/"+this.id);
+        this.routerService.navigateByUrl("/admin/events");
       })
   }
 
