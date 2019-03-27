@@ -13,5 +13,5 @@ export class EventCreate {
 
     public description: string;
 
-    public category : Category[]
+    public category : number;
 }

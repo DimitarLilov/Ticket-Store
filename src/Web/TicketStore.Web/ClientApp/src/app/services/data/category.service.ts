@@ -14,6 +14,10 @@ export class CategoryService {
         private httpClient: HttpClient)
     { }
 
+    public getAll(){
+        return this.httpClient.get<Category[]>(CategoryService.URLS.CATEGORY)
+    }
+
     public createCategory(body : CategoryCreate){
         return this.httpClient.post(CategoryService.URLS.CATEGORY,body)
     }

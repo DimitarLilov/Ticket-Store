@@ -1,3 +1,4 @@
+{{eventCreateBindingModel | json}}
 <div>
   <div class="card">
     <div class="container">
@@ -37,14 +38,16 @@
               </div>
             </div>
             <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label for="categoryId">category</label>
-                        <input required type="number" id="categoryId" name="categoryId"
-                          [(ngModel)]="eventCreateBindingModel.categoryId" class="form-control">
-                      </div>
-                    </div>
-                  </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label for="category">Category</label>
+                  <select class="form-control" [(ngModel)]="eventCreateBindingModel.category" name="category" id="category">
+                      <option value="" disabled selected>select a category</option>
+                      <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+                    </select>
+                </div>
+              </div>
+            </div>
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
@@ -59,8 +62,8 @@
                 <div class="form-group">
                   <label for="date">Date</label>
                   <div class="input-group">
-                    <input class="form-control" required placeholder="yyyy-mm-dd" name="dp"
-                      [(ngModel)]="date" ngbDatepicker #d="ngbDatepicker">
+                    <input class="form-control" required placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="date"
+                      ngbDatepicker #d="ngbDatepicker">
                     <div class="input-group-append">
                       <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
                         <fa-icon [icon]="faCalendar"></fa-icon>
@@ -86,7 +89,7 @@
                 </div>
               </div>
             </div>
-            
+
             <button class="btn btn-primary" [disabled]="f.invalid" type="submit">Create</button>
           </form>
         </div>
