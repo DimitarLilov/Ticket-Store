@@ -1,19 +1,19 @@
-<div *ngIf="categoryEditBindingModel">
+<div *ngIf="categoryDeleteBindingModel">
   <div class="card">
     <div class="container">
       <div class="row">
         <div class="col-md-12 d-flex flex-column">
-          <form #f="ngForm" (ngSubmit)="edit()">
+          <form #f="ngForm" (ngSubmit)="delete()">
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="text" id="name" name="name" [(ngModel)]="categoryEditBindingModel.name"
-                    class="form-control">
+                  <input type="text" id="name" name="name" [(ngModel)]="categoryDeleteBindingModel.name"
+                    class="form-control" disabled>
                 </div>
               </div>
             </div>
-            <button class="btn btn-primary" [disabled]="f.invalid" type="submit">Edit</button>
+            <button class="btn btn-danger" [disabled]="f.invalid" type="submit">Delete</button>
           </form>
         </div>
       </div>

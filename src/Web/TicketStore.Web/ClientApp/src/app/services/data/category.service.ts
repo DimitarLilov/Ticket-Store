@@ -29,4 +29,8 @@ export class CategoryService {
     public editCategory(id:string, body: Category){
         return this.httpClient.put(CategoryService.URLS.CATEGORY + id,body)
     }
+
+    public deleteCategory(id:string){
+        return this.httpClient.delete(CategoryService.URLS.CATEGORY + id);
+    }
 }

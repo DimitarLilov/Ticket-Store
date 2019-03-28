@@ -7,7 +7,9 @@ import { EventCreateComponent,
   CategoryEditComponent , 
   AdminAllEventComponent, 
   AdminComponent,
-  AdminAllCategoryComponent } from './index';
+  AdminAllCategoryComponent,
+  CategoryDeleteComponent } from './index';
+
 
 
 
@@ -20,6 +22,7 @@ const EVENT_ROUTES : Routes = [
   { path: 'categories', pathMatch: 'full', component: AdminAllCategoryComponent},
   { path: 'categories/create', pathMatch: 'full', component: CategoryCreateComponent},
   { path: 'categories/edit/:id', pathMatch: 'full', component: CategoryEditComponent},
+  { path: 'categories/delete/:id', pathMatch: 'full', component: CategoryDeleteComponent},
   ]
 
 @NgModule({
