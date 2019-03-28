@@ -6,7 +6,9 @@ import { EventCreateComponent,
   EventEditComponent, 
   CategoryEditComponent , 
   AdminAllEventComponent, 
-  AdminComponent } from './index';
+  AdminComponent,
+  AdminAllCategoryComponent } from './index';
+
 
 
 
@@ -15,6 +17,7 @@ const EVENT_ROUTES : Routes = [
   { path: 'events', pathMatch: 'full', component: AdminAllEventComponent},
   { path: 'events/create', pathMatch: 'full', component: EventCreateComponent},
   { path: 'events/edit/:id', pathMatch: 'full', component: EventEditComponent},
+  { path: 'categories', pathMatch: 'full', component: AdminAllCategoryComponent},
   { path: 'categories/create', pathMatch: 'full', component: CategoryCreateComponent},
   { path: 'categories/edit/:id', pathMatch: 'full', component: CategoryEditComponent},
   ]
