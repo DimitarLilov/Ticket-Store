@@ -13,7 +13,7 @@ export class EventCreateComponent implements OnInit {
   eventCreateBindingModel : EventCreate;
   categories : Category[];
   faCalendar = faCalendar;
-  date :  {year: number, month: number, day: number};;
+  date : NgbDate;
   time : NgbTimeStruct
 
   constructor(private eventService: EventService, private routerService : RouterService, private categoryService : CategoryService) {
@@ -27,12 +27,12 @@ export class EventCreateComponent implements OnInit {
   }
 
   create() {
-    // this.eventCreateBindingModel.eventDateTime = `${this.date.year}/${this.date.month}/${this.date.day} ${this.time.hour}:${this.time.minute}:${this.time.second}`
-    // this.eventService.createEvent(
-    //     this.eventCreateBindingModel)
-    //     .subscribe((id) =>{
-    //         this.routerService.navigateByUrl("events/"+id);
-    //     });
+    this.eventCreateBindingModel.eventDateTime = `${this.date.year}/${this.date.month}/${this.date.day} ${this.time.hour}:${this.time.minute}:${this.time.second}`
+    this.eventService.createEvent(
+        this.eventCreateBindingModel)
+        .subscribe((id) =>{
+            this.routerService.navigateByUrl("events/"+id);
+        });
   }
 
 }

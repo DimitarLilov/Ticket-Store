@@ -28,6 +28,7 @@ namespace TicketStore.Web
     using TicketStore.Services.Data;
     using TicketStore.Services.Data.Interfaces;
     using TicketStore.Web.Infrastructure.Middlewares.Auth;
+    using TicketStore.Web.Shared.Categories;
     using TicketStore.Web.Shared.Events;
 
     public class Startup
@@ -44,6 +45,7 @@ namespace TicketStore.Web
         {
             AutoMapperConfig.RegisterMappings(
                 typeof(EventListItem).Assembly,
+                typeof(CategoryResponseModel).Assembly,
                 typeof(EventDetailsResponseModel).Assembly,
                 typeof(Event).Assembly,
                 typeof(Category).Assembly,

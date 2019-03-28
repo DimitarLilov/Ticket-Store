@@ -39,9 +39,12 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="categoryId">category</label>
-                  <input required type="number" id="categoryId" name="categoryId"
-                    [(ngModel)]="eventEditBindingModel.categoryId" class="form-control">
+                  <label for="category">Category</label>
+                  <select class="form-control" [(ngModel)]="eventEditBindingModel.categoryId" name="category"
+                    id="category">
+                    <option value="" disabled selected>select a category</option>
+                    <option *ngFor="let category of categories" [ngValue]="category.id">{{category.name}}</option>
+                  </select>
                 </div>
               </div>
             </div>

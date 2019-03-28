@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Event, EventDetails, EventCreate, HomeEvent } from '../../domain/index';
+import { Event, EventDetails, EventCreate, HomeEvent, EventEdit } from '../../domain/index';
 
 
 @Injectable()
@@ -20,6 +20,10 @@ export class EventService {
 
     public getAllEvents() {
         return this.httpClient.get<Event[]>(EventService.URLS.EVENTS)
+    }
+
+    public getEditEventsById(id :string){
+        return this.httpClient.get<EventEdit>(EventService.URLS.EVENTS + id);
     }
 
     public getEventsById(id: string){

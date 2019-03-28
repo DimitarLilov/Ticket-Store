@@ -16,6 +16,8 @@ export class EventDetails {
     
     public description: string;
 
+    public categoryId: number
+
     public category : Category
 
     public tickets : Ticket[]
