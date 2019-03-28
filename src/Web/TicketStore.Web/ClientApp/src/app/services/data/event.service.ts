@@ -43,7 +43,11 @@ export class EventService {
         return this.httpClient.post(EventService.URLS.EVENTS,body)
     }
 
-    editEvent(id: string, body: EventDetails) {
+    public editEvent(id: string, body: EventDetails) {
         return this.httpClient.put(EventService.URLS.EVENTS + id,body)
+    }
+
+    public deleteEvent(id: string){
+        return this.httpClient.delete(EventService.URLS.EVENTS + id);
     }
 }
