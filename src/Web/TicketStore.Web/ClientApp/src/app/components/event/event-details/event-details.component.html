@@ -10,7 +10,10 @@
         <div class="col-md-8 d-flex flex-column">
           <h2 class="event-title">{{event.title}}</h2>
           <a routerLink="/categories/{{event.category.id}}"  class="event-category">{{event.category.name}}</a>
-          <p>{{event.description}}</p>
+          <!-- <p>{{event.description}}</p> -->
+          <p class="angular-with-newlines" ng-repeat="item in items">
+            {{event.description}}
+          </p>
           <ul class="list-unstyled">
             <li class="event-date">Date: <span>{{event.date | date:'fullDate'}}</span></li>
             <li class="event-time">Time: <span>{{event.date | date:'mediumTime'}}</span></li>

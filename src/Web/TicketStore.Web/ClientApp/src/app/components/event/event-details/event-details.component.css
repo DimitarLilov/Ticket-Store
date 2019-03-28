@@ -19,3 +19,6 @@
 a.event-category {
     text-decoration: none;
 }
+.angular-with-newlines {
+  white-space: pre-wrap;
+}
