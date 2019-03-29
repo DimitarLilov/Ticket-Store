@@ -30,6 +30,7 @@ namespace TicketStore.Web
     using TicketStore.Web.Infrastructure.Middlewares.Auth;
     using TicketStore.Web.Shared.Categories;
     using TicketStore.Web.Shared.Events;
+    using TicketStore.Web.Shared.Tickets;
 
     public class Startup
     {

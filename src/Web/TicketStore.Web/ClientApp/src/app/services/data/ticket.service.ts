@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TicketDetails, TicketCreate } from 'src/app/domain/index';
+import { TicketDetails, TicketCreate, TicketEdit } from 'src/app/domain/index';
 import { map } from 'rxjs/operators';
 
 @Injectable()
@@ -31,5 +31,9 @@ export class TicketService {
 
     public crateTicket(ticket: TicketCreate){
         return this.httpClient.post(TicketService.URLS.TICKET,ticket);
+    }
+
+    public editTicket(id: number, ticket: TicketEdit){
+        return this.httpClient.put(TicketService.URLS.TICKET + id,ticket);
     }
 }

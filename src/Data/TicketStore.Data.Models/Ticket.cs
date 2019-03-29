@@ -25,7 +25,6 @@
         [ForeignKey("Event")]
         public int EventId { get; set; }
 
-        [Required]
         public Event Event { get; set; }
 
         public virtual ICollection<UserTickets> Users { get; set; }

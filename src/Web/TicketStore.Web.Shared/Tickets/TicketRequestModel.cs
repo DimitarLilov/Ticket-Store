@@ -1,6 +1,7 @@
 ﻿namespace TicketStore.Web.Shared.Tickets
 {
     using System.ComponentModel.DataAnnotations;
+    using AutoMapper;
     using TicketStore.Common.Mapping;
     using TicketStore.Data.Models;
 
@@ -17,5 +18,6 @@
 
         [Required]
         public int EventId { get; set; }
+
     }
 }

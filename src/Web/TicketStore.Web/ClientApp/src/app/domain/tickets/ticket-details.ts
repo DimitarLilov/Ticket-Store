@@ -12,4 +12,6 @@ export class TicketDetails{
     public customerQuantity : number
 
     public event : Event
+
+    public eventId : number
 }

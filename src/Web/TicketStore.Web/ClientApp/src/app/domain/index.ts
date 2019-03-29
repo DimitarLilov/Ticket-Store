@@ -9,5 +9,6 @@ export * from './cart/cart-item';
 export * from './tickets/ticket';
 export * from './tickets/ticket-details';
 export * from './tickets/ticket-create';
+export * from './tickets/ticket-edit';
 export * from './category/category';
 export * from './category/category-create';

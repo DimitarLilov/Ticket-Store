@@ -11,8 +11,10 @@ import {
   CategoryCreateComponent, 
   CategoryEditComponent , 
   CategoryDeleteComponent,
-  TicketCreateComponent
+  TicketCreateComponent,
+  TicketEditComponent
 } from './index';
+
 
 
 const EVENT_ROUTES : Routes = [
@@ -26,6 +28,7 @@ const EVENT_ROUTES : Routes = [
   { path: 'categories/create', pathMatch: 'full', component: CategoryCreateComponent},
   { path: 'categories/edit/:id', pathMatch: 'full', component: CategoryEditComponent},
   { path: 'categories/delete/:id', pathMatch: 'full', component: CategoryDeleteComponent},
+  { path: 'tickets/edit/:id', pathMatch: 'full', component: TicketEditComponent},
   ]
 
 @NgModule({
