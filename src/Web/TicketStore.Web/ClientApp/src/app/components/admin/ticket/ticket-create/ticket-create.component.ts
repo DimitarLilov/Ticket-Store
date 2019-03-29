@@ -25,7 +25,7 @@ export class TicketCreateComponent implements OnInit {
     this.eventId = this.route.snapshot.params['id'];
     this.ticketCreateBindingModel.eventId = this.eventId;
     this.ticketService.crateTicket(this.ticketCreateBindingModel).subscribe((data) => {
-        this.routerService.navigateByUrl('admin/events');
+        this.routerService.navigateByUrl(`/admin/events/${this.eventId}/tickets`);
     });
   }
 

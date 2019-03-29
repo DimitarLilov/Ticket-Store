@@ -32,7 +32,7 @@ export class TicketEditComponent implements OnInit {
 
   edit() {
     this.ticketService.editTicket(this.id,this.ticketEditBindingModel).subscribe((data) => {
-        this.routerService.navigateByUrl('admin/events');
+        this.routerService.navigateByUrl(`/admin/events/${this.ticketEditBindingModel.eventId}/tickets`);
     });
   }
 

@@ -1,0 +1,29 @@
+<div *ngIf="event">
+  <div>
+    <button routerLink="/admin/events/{{event.id}}/create/ticket" class="btn btn-primary">Add Event</button>
+  </div>
+  <br>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ticket of event.tickets; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ticket.name}}</td>
+        <td>{{ticket.price}}</td>
+        <td>{{ticket.quantity}}</td>
+        <td class="actions">
+          <button routerLink="/admin/tickets/edit/{{ticket.id}}" class="btn btn-primary">Edit</button>
+          <button routerLink="/admin/tickets/delete/{{ticket.id}}" type="button" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
