@@ -35,6 +35,7 @@ toggle() {
 
 
 ngOnInit(): void {
+  this.isAdmin = this.authService.isAdmin();
   this.authService.isAuthorized$.subscribe(
     (isAuthorized: boolean) => {
         this.isUserAuthorized = isAuthorized;

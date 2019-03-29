@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TicketDetails } from 'src/app/domain/index';
+import { TicketDetails, TicketCreate } from 'src/app/domain/index';
 import { map } from 'rxjs/operators';
 
 @Injectable()
 export class TicketService {
     public static readonly URLS: any = {
-        GET: 'api/tickets/',
+        TICKET: 'api/tickets/',
     };
 
     constructor(
@@ -14,7 +14,7 @@ export class TicketService {
     { }
 
     public getTicketById(id: number){
-        return this.httpClient.get<TicketDetails>(TicketService.URLS.GET + id)
+        return this.httpClient.get<TicketDetails>(TicketService.URLS.TICKET + id)
     }
 
     public getManyTicketsById(cart){
@@ -27,5 +27,9 @@ export class TicketService {
             })).subscribe();
           }
           return tickets;
+    }
+
+    public crateTicket(ticket: TicketCreate){
+        return this.httpClient.post(TicketService.URLS.TICKET,ticket);
     }
 }

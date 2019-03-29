@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit{
           this.lastThreeEvents = data;
       }) 
       this.eventService.getTopEvent().subscribe((data) => {
-        this.topEvent = data[0];
+        this.topEvent = data[1];
     }) 
   }
 }

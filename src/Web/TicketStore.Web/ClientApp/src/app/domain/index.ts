@@ -8,5 +8,6 @@ export * from './home/home-event';
 export * from './cart/cart-item';
 export * from './tickets/ticket';
 export * from './tickets/ticket-details';
+export * from './tickets/ticket-create';
 export * from './category/category';
 export * from './category/category-create';
