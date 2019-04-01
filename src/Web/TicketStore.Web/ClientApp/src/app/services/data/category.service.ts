@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CategoryCreate, Category } from 'src/app/domain';
+import { CategoryCreate, Category, CategoryDetails } from '../../domain';
 
 
 @Injectable()
@@ -32,5 +32,9 @@ export class CategoryService {
 
     public deleteCategory(id:string){
         return this.httpClient.delete(CategoryService.URLS.CATEGORY + id);
+    }
+
+    public getCategoryDetailsById(id: string){
+        return this.httpClient.get<CategoryDetails>(CategoryService.URLS.CATEGORY + id);
     }
 }

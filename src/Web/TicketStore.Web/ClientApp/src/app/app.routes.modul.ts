@@ -10,6 +10,7 @@ export const APP_ROUTES: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'account', loadChildren: './components/account/account.module#AccountModule' },
   { path: 'events', loadChildren: './components/event/event.module#EventModule' },
+  { path: 'categories', loadChildren: './components/category/category.module#CategoryModule' },
   { path: 'cart', component: CartComponent, pathMatch: 'full'},
   { path: 'admin',canActivate: [ AdminGuard ], loadChildren: './components/admin/admin.module#AdminModule'}
 ];

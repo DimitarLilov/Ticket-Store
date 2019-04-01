@@ -12,3 +12,4 @@ export * from './tickets/ticket-create';
 export * from './tickets/ticket-edit';
 export * from './category/category';
 export * from './category/category-create';
+export * from './category/category-details';
