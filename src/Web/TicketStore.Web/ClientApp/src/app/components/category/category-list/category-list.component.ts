@@ -17,10 +17,12 @@ export class CategoryListComponent implements OnInit{
     constructor(private categoryService : CategoryService, private route : ActivatedRoute) {}
 
     ngOnInit(): void {
-        this.id = this.route.snapshot.params['id'];
-        this.categoryService.getCategoryDetailsById(this.id).subscribe((category) => {
-            this.category = category;
-        });
+        this.route.params.subscribe(params => {
+            this.id = params['id'];
+            this.categoryService.getCategoryDetailsById(this.id).subscribe((category) => {
+                this.category = category;
+            });
+        });    
     }
 }
 

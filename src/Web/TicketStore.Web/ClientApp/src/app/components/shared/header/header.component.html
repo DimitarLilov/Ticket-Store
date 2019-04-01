@@ -14,11 +14,13 @@
           <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
             <a class="nav-link text-dark" [routerLink]='["/events"]'>Events</a>
           </li>
-          <li (click)="expand()" [class]="dropdownLi" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+          <li (click)="expand()" class="nav-item" [class]="dropdownLi" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
             <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown"
              aria-haspopup="true" aria-expanded="false">Categories</a>
               <div [class]="dropdownMenu" aria-labelledby="dropdown01">
-                <a *ngFor="let category of categories" class="dropdown-item"  routerLink="/categories/{{category.id}}">{{category.name}}</a>
+                <div *ngFor="let category of categories">
+                <a class="dropdown-item nav-link text-dark"  [routerLink]="['/categories', category.id]">{{category.name}}</a>
+              </div>
               </div>
           </li>
           <li *ngIf="isAdmin" class="nav-item" [routerLinkActive]='["link-active"]'
