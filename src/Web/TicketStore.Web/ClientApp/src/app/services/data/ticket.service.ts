@@ -36,4 +36,8 @@ export class TicketService {
     public editTicket(id: number, ticket: TicketEdit){
         return this.httpClient.put(TicketService.URLS.TICKET + id,ticket);
     }
+
+    public deleteTicket(id: number){
+        return this.httpClient.delete(TicketService.URLS.TICKET + id);
+    }
 }
