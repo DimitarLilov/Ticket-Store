@@ -65,7 +65,6 @@ export class CartService {
 
     public removeCartItem(ticket : CartItem): void{
         this.items = this.items.filter(t => t.id != ticket.id);
-        console.log(this.items.filter(t => t.id != ticket.id));
         this.setCart(this.items)
         this.isCartSubject.next(true);
         this.isCartRemoveItemSubject.next(true)

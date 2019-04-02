@@ -1,5 +1,5 @@
-<div class="card">
-  <table class="table table-hover shopping-cart-wrap">
+<div *ngIf="tickets.length != 0" class="card">
+  <table if class="table table-hover shopping-cart-wrap">
     <thead class="text-muted">
       <tr>
         <th scope="col">Product</th>
@@ -50,3 +50,6 @@
     </div>
   </div>
 </div>
+<div *ngIf="tickets.length == 0">
+  <h1>Cart is empty</h1>
+ </div>

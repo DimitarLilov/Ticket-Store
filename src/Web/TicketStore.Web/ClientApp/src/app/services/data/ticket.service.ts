@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TicketDetails, TicketCreate, TicketEdit } from 'src/app/domain/index';
+import { TicketDetails, TicketCreate, TicketEdit, CartTicketDetails } from 'src/app/domain/index';
 import { map } from 'rxjs/operators';
 
 @Injectable()
@@ -18,10 +18,10 @@ export class TicketService {
     }
 
     public getManyTicketsById(cart){
-        const tickets : TicketDetails[] = [];
+        const tickets : CartTicketDetails[] = [];
         for(let item of cart){
          this.getTicketById(item.id)
-            .pipe(map((res : TicketDetails) => {
+            .pipe(map((res : CartTicketDetails) => {
                 res.customerQuantity = item.qty;
                 tickets.push(res);
             })).subscribe();

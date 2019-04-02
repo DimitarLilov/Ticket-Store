@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CartService, TicketService } from 'src/app/services';
-import { TicketDetails } from 'src/app/domain';
+import { CartTicketDetails } from '../../domain/index';
 
 @Component({
   selector: 'app-cart',
@@ -9,7 +9,7 @@ import { TicketDetails } from 'src/app/domain';
 })
 
 export class CartComponent{
-  tickets : TicketDetails[]
+  tickets : CartTicketDetails[]
 
   constructor(private cartService : CartService,
     private ticketService : TicketService){ 
@@ -36,7 +36,7 @@ export class CartComponent{
 
   sumPrice() :number{
     return this.tickets
-    .reduce((sum : number, ticket : TicketDetails) => sum += (ticket.price * ticket.customerQuantity), 0);
+    .reduce((sum : number, ticket : CartTicketDetails) => sum += (ticket.price * ticket.customerQuantity), 0);
   };
 
 

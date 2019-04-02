@@ -6,6 +6,7 @@ export * from './event/event-create';
 export * from './event/event-edit';
 export * from './home/home-event';
 export * from './cart/cart-item';
+export * from './cart/cart-ticket-item';
 export * from './tickets/ticket';
 export * from './tickets/ticket-details';
 export * from './tickets/ticket-create';

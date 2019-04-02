@@ -1,6 +1,6 @@
 import { Event } from "../event/event";
 
-export class TicketDetails{
+export class CartTicketDetails{
     public id : number
 
     public name: string;
@@ -8,6 +8,8 @@ export class TicketDetails{
     public price: number
 
     public quantity: number
+
+    public customerQuantity : number
 
     public event : Event
 
