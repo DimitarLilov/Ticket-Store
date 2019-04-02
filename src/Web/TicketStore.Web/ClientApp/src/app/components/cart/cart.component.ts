@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { CartService, TicketService } from 'src/app/services';
+import { CartService, TicketService, RouterService } from 'src/app/services';
 import { CartTicketDetails } from '../../domain/index';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -12,7 +13,8 @@ export class CartComponent{
   tickets : CartTicketDetails[]
 
   constructor(private cartService : CartService,
-    private ticketService : TicketService){ 
+    private ticketService : TicketService,
+    private routerService: RouterService){ 
   }
 
   ngOnInit(): void {
@@ -39,5 +41,8 @@ export class CartComponent{
     .reduce((sum : number, ticket : CartTicketDetails) => sum += (ticket.price * ticket.customerQuantity), 0);
   };
 
-
+  checkout(){
+    this.cartService.changeTicket(this.tickets);
+    this.routerService.navigateByUrl('/cart/checkout');
+  }
 }

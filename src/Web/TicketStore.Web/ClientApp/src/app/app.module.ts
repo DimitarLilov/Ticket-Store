@@ -15,6 +15,7 @@ import { MultiplyPipe } from './pipes/multiply.pipe';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { CartComponent } from './components/cart/cart.component';
+import { CartCheckoutComponent } from './components/cart/cart-checkout/cart-checkout.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { CartComponent } from './components/cart/cart.component';
     AppComponent,
     HomeComponent,
     CartComponent,
+    CartCheckoutComponent,
     MultiplyPipe
   ],
   imports: [

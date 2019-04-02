@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { StorageService } from '../storage.service';
-import { CartItem } from 'src/app/domain';
+import { CartItem, CartTicketDetails } from '../..//domain';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
@@ -19,6 +19,9 @@ export class CartService {
     public isCartRemove$ = this.isCartRemoveItemSubject.asObservable();
     
     private items: CartItem[] = null;
+
+    private ticketSource = new BehaviorSubject(null);
+    currentTickets = this.ticketSource.asObservable();
 
     public getCounOfCartElements(): number{
         if (!this.items) {
@@ -72,6 +75,10 @@ export class CartService {
 
     public isCart(): boolean {
         return this.getCart() !== null;
+    }
+
+    public changeTicket(tickets: CartTicketDetails[]) {
+        this.ticketSource.next(tickets)
     }
 
     private setCart(items : CartItem[]): void {
