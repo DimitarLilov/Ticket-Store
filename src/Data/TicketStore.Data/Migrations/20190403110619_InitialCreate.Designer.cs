@@ -10,7 +10,7 @@ using TicketStore.Data;
 namespace TicketStore.Data.Migrations
 {
     [DbContext(typeof(TicketStoreDbContext))]
-    [Migration("20190318124442_InitialCreate")]
+    [Migration("20190403110619_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -258,6 +258,8 @@ namespace TicketStore.Data.Migrations
                     b.Property<string>("UserId");
 
                     b.Property<int>("TicketId");
+
+                    b.Property<bool>("Active");
 
                     b.Property<string>("Id")
                         .IsRequired();

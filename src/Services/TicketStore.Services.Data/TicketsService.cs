@@ -3,6 +3,7 @@
     using System.Linq;
     using System.Threading.Tasks;
     using AutoMapper;
+    using Microsoft.AspNetCore.Identity;
     using TicketStore.Common.Mapping;
     using TicketStore.Data.Common.Repositories;
     using TicketStore.Data.Models;
@@ -12,10 +13,13 @@
     public class TicketsService : ITicketsService
     {
         private readonly IRepository<Ticket> ticketsRepository;
+        private readonly IRepository<UserTickets> userTicketsRepository;
+        private readonly UserManager<ApplicationUser> userManager;
 
-        public TicketsService(IRepository<Ticket> ticketsRepository)
+        public TicketsService(IRepository<Ticket> ticketsRepository, UserManager<ApplicationUser> userManager)
         {
             this.ticketsRepository = ticketsRepository;
+            this.userManager = userManager;
         }
 
         public async Task<int> AddTicket(TicketRequestModel model)
@@ -26,6 +30,18 @@
             await this.ticketsRepository.SaveChangesAsync();
 
             return ticket.Id;
+        }
+
+        public async Task BuyTicket(int id, string user)
+        {
+            UserTickets userTickets = new UserTickets()
+            {
+                TicketId = id,
+                UserId = user,
+                Active = false
+            };
+            await this.userTicketsRepository.AddAsync(userTickets);
+            await this.userTicketsRepository.SaveChangesAsync();
         }
 
         public async Task DeleteTicket(int id)

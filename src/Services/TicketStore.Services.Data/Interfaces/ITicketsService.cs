@@ -12,5 +12,6 @@
         Task<TicketResponseModel> EditTicket(int id, TicketRequestModel model);
 
         Task DeleteTicket(int id);
+        Task BuyTicket(int id, string user);
     }
 }

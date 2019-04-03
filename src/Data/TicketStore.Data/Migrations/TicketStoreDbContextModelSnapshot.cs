@@ -257,6 +257,8 @@ namespace TicketStore.Data.Migrations
 
                     b.Property<int>("TicketId");
 
+                    b.Property<bool>("Active");
+
                     b.Property<string>("Id")
                         .IsRequired();
 
