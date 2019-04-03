@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class TicketService {
+ 
     public static readonly URLS: any = {
         TICKET: 'api/tickets/',
     };
@@ -40,4 +41,8 @@ export class TicketService {
     public deleteTicket(id: number){
         return this.httpClient.delete(TicketService.URLS.TICKET + id);
     }
+
+    buyTicket(ticket: any): any {
+        return this.httpClient.post(TicketService.URLS.TICKET + ticket.id + "/buy",ticket);
+      }
 }

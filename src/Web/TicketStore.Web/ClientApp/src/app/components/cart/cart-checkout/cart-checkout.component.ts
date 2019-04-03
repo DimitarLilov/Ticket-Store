@@ -27,4 +27,11 @@ export class CartCheckoutComponent{
     .reduce((sum : number, ticket : CartTicketDetails) => sum += (ticket.price * ticket.customerQuantity), 0);
   };
 
+  continueCheckout(){
+    for(let ticket of this.tickets){
+      for(let i = 0; i < ticket.customerQuantity; i++){
+        this.ticketService.buyTicket(ticket).subscribe();
+      }
+    }
+  }
 }

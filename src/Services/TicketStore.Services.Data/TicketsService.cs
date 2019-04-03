@@ -14,12 +14,14 @@
     {
         private readonly IRepository<Ticket> ticketsRepository;
         private readonly IRepository<UserTickets> userTicketsRepository;
+
         private readonly UserManager<ApplicationUser> userManager;
 
-        public TicketsService(IRepository<Ticket> ticketsRepository, UserManager<ApplicationUser> userManager)
+        public TicketsService(IRepository<Ticket> ticketsRepository, IRepository<UserTickets> userTicketsRepository, UserManager<ApplicationUser> userManager)
         {
             this.ticketsRepository = ticketsRepository;
             this.userManager = userManager;
+            this.userTicketsRepository = userTicketsRepository;
         }
 
         public async Task<int> AddTicket(TicketRequestModel model)
