@@ -46,18 +46,6 @@
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
 
-            //builder.Entity<UserTickets>()
-            //    .HasKey(ut => new { ut.UserId, ut.TicketId });
-
-            //builder.Entity<UserTickets>()
-            //    .HasOne(ut => ut.User)
-            //    .WithMany(u => u.Tickets)
-            //    .HasForeignKey(ut => ut.UserId);
-
-            //builder.Entity<UserTickets>()
-            //    .HasOne(ut => ut.Ticket)
-            //    .WithMany(t => t.Users)
-            //    .HasForeignKey(ut => ut.TicketId);
         }
     }
 }
