@@ -73,6 +73,10 @@ export class CartService {
         this.isCartRemoveItemSubject.next(true)
     }
 
+    public removeAllCartItem(): void{
+        this.setEmptyCart();
+    }
+
     public isCart(): boolean {
         return this.getCart() !== null;
     }
@@ -88,5 +92,6 @@ export class CartService {
     private setEmptyCart(){
         this.items = [];
         this.storageService.setItem(CartService.USER_CART, []);
+        this.isCartSubject.next(true);
     }
 }

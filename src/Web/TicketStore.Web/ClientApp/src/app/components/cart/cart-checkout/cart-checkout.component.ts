@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CartService, TicketService } from 'src/app/services';
+import { CartService, TicketService, RouterService } from '../../../services';
 import { CartTicketDetails } from '../../../domain/index';
 
 @Component({
@@ -12,7 +12,8 @@ export class CartCheckoutComponent{
   tickets : CartTicketDetails[]
 
   constructor(private cartService : CartService,
-    private ticketService : TicketService){ 
+    private ticketService : TicketService,
+    private routerService: RouterService){ 
   }
 
   ngOnInit(): void {
@@ -33,5 +34,7 @@ export class CartCheckoutComponent{
         this.ticketService.buyTicket(ticket).subscribe();
       }
     }
+    this.cartService.removeAllCartItem();
+    this.routerService.redirectToHome();
   }
 }
