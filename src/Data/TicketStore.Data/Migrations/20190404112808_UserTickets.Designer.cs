@@ -10,8 +10,8 @@ using TicketStore.Data;
 namespace TicketStore.Data.Migrations
 {
     [DbContext(typeof(TicketStoreDbContext))]
-    [Migration("20190403110619_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20190404112808_UserTickets")]
+    partial class UserTickets
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -255,20 +255,20 @@ namespace TicketStore.Data.Migrations
 
             modelBuilder.Entity("TicketStore.Data.Models.UserTickets", b =>
                 {
-                    b.Property<string>("UserId");
-
-                    b.Property<int>("TicketId");
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<bool>("Active");
 
-                    b.Property<string>("Id")
-                        .IsRequired();
+                    b.Property<int>("TicketId");
 
-                    b.HasKey("UserId", "TicketId");
+                    b.Property<string>("UserId");
 
-                    b.HasAlternateKey("Id");
+                    b.HasKey("Id");
 
                     b.HasIndex("TicketId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("UserTickets");
                 });
@@ -343,8 +343,7 @@ namespace TicketStore.Data.Migrations
 
                     b.HasOne("TicketStore.Data.Models.ApplicationUser", "User")
                         .WithMany("Tickets")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

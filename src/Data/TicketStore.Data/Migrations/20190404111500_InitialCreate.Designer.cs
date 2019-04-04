@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TicketStore.Data;
 
 namespace TicketStore.Data.Migrations
 {
     [DbContext(typeof(TicketStoreDbContext))]
-    partial class TicketStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190404111500_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -253,20 +255,20 @@ namespace TicketStore.Data.Migrations
 
             modelBuilder.Entity("TicketStore.Data.Models.UserTickets", b =>
                 {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<bool>("Active");
+                    b.Property<string>("UserId");
 
                     b.Property<int>("TicketId");
 
-                    b.Property<string>("UserId");
+                    b.Property<bool>("Active");
 
-                    b.HasKey("Id");
+                    b.Property<string>("Id")
+                        .IsRequired();
+
+                    b.HasKey("UserId", "TicketId");
+
+                    b.HasAlternateKey("Id");
 
                     b.HasIndex("TicketId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("UserTickets");
                 });
@@ -341,7 +343,8 @@ namespace TicketStore.Data.Migrations
 
                     b.HasOne("TicketStore.Data.Models.ApplicationUser", "User")
                         .WithMany("Tickets")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
