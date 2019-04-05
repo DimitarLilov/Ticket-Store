@@ -14,3 +14,5 @@ export * from './tickets/ticket-edit';
 export * from './category/category';
 export * from './category/category-create';
 export * from './category/category-details';
+export * from './order/order';
+export * from './user/user';

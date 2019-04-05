@@ -15,6 +15,7 @@ import { EventService } from './data/event.service';
 import { CartService } from './data/cart.service'
 import { TicketService } from './data/ticket.service';
 import { CategoryService } from './data/category.service';
+import { OrderService } from './data/order.service';
 
 
 export * from './guards/auth-guard.service';
@@ -33,6 +34,7 @@ export * from './data/event.service';
 export * from './data/cart.service';
 export * from './data/ticket.service';
 export * from './data/category.service';
+export * from './data/order.service';
 
 
 
@@ -52,5 +54,6 @@ export const APP_SERVICES = [
     EventService,
     CartService,
     TicketService,
-    CategoryService
+    CategoryService,
+    OrderService
 ];

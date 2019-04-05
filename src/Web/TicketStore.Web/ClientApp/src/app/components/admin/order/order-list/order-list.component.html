@@ -1,0 +1,23 @@
+<br>
+<table *ngIf="orders" class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">User</th>
+      <th scope="col">Event</th>
+      <th scope="col">Ticket</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of orders; index as i" >
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ order.user.firstName }} {{ order.user.lastName }}</td>
+      <td>{{ order.ticket.event.title }}</td>
+      <td>{{ order.ticket.name }}</td>
+      <td class="actions">
+        <button *ngIf="!order.active" routerLink="" class="btn btn-primary">Activate</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
