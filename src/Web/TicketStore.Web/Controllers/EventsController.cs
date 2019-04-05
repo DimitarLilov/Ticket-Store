@@ -9,7 +9,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
-
+    using TicketStore.Common;
     using TicketStore.Data.Models;
     using TicketStore.Services.Data.Interfaces;
     using TicketStore.Web.Infrastructure.Extensions;
@@ -74,14 +74,14 @@
         }
 
         [HttpPost]
-        [Authorize(Roles = "Administrator", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName, AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesDefaultResponseType]
         public async Task<ActionResult<EventDetailsResponseModel>> Create([FromBody]CreateEventRequestModel model)
         {
-            if (!this.HttpContext.User.IsInRole("Administrator"))
+            if (!this.HttpContext.User.IsInRole(GlobalConstants.AdministratorRoleName))
             {
                 return this.Unauthorized();
             }
@@ -95,7 +95,7 @@
         }
 
         [HttpPut("{id}")]
-        [Authorize(Roles = "Administrator", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName, AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -110,7 +110,7 @@
                 return this.NotFound();
             }
 
-            if (!this.HttpContext.User.IsInRole("Administrator"))
+            if (!this.HttpContext.User.IsInRole(GlobalConstants.AdministratorRoleName))
             {
                 return this.Unauthorized();
             }
@@ -124,7 +124,7 @@
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Administrator", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName, AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -139,7 +139,7 @@
                 return this.NotFound();
             }
 
-            if (!this.HttpContext.User.IsInRole("Administrator"))
+            if (!this.HttpContext.User.IsInRole(GlobalConstants.AdministratorRoleName))
             {
                 return this.Unauthorized();
             }

@@ -5,7 +5,7 @@
     using TicketStore.Common.Mapping;
     using TicketStore.Data.Models;
 
-    public class BuyTicketRequestModel : IMapTo<Ticket>
+    public class BuyTicketRequestModel : IMapTo<Ticket>, IMapFrom<Ticket>
     {
         [Required]
         public int Id { get; set; }
