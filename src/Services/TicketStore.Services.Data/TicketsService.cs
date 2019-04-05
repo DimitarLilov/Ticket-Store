@@ -34,11 +34,11 @@
             return ticket.Id;
         }
 
-        public async Task BuyTicket(int id, string user)
+        public async Task BuyTicket(BuyTicketRequestModel model, string user)
         {
             UserTickets userTickets = new UserTickets()
             {
-                TicketId = id,
+                TicketId = model.Id,
                 UserId = user,
                 Active = false
             };

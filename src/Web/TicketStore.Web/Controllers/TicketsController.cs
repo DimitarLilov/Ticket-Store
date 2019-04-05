@@ -98,15 +98,20 @@
             return this.Ok(ticket);
         }
 
-        [HttpPost("{id}/buy")]
+        [HttpPost("buy")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult<TicketResponseModel>> Buy(int id, [FromBody]TicketRequestModel model)
+        public async Task<ActionResult<TicketResponseModel>> Buy([FromBody]BuyTicketRequestModel model)
         {
+            var ticket = this.ticketsService.GetEvetById(model.Id);
+            if (ticket == null)
+            {
+                return this.BadRequest();
+            }
             var user = this.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             if (user == null)
             {
@@ -116,7 +121,7 @@
             {
                 return this.BadRequest(this.ModelState.GetFirstError());
             }
-            await this.ticketsService.BuyTicket(id, user);
+            await this.ticketsService.BuyTicket(model, user);
             return this.Ok();
         }
 

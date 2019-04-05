@@ -43,6 +43,6 @@ export class TicketService {
     }
 
     buyTicket(ticket: any): any {
-        return this.httpClient.post(TicketService.URLS.TICKET + ticket.id + "/buy",ticket);
+        return this.httpClient.post(TicketService.URLS.TICKET + "buy",ticket);
       }
 }
