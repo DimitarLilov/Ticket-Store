@@ -16,7 +16,7 @@
       <td>{{ order.ticket.event.title }}</td>
       <td>{{ order.ticket.name }}</td>
       <td class="actions">
-        <button *ngIf="!order.active" routerLink="" class="btn btn-primary">Activate</button>
+        <button *ngIf="!order.active" (click)="activate(order.id)" class="btn btn-primary">Activate</button>
       </td>
     </tr>
   </tbody>

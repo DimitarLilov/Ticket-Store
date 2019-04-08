@@ -17,6 +17,18 @@ export class OrderComponent implements OnInit {
     this.orderService.getAllOrders().subscribe((orders) => {
         this.orders = orders
     });
+    this.orderService.isActiveOrder$.subscribe(
+      (isActiveOrder : boolean) => {
+        if(isActiveOrder){
+          this.orderService.getAllOrders().subscribe((orders) => {
+            this.orders = orders
+          });
+        }
+      }
+    )
   }
 
+  activate(id : string){
+    this.orderService.activateOrder(id);
+  }
 }
