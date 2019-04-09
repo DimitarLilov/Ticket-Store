@@ -106,6 +106,7 @@ namespace TicketStore.Web
             services.AddTransient<ICategoriesService, CategoriesService>();
             services.AddTransient<ITicketsService, TicketsService>();
             services.AddTransient<IOrdersService, OrdersService>();
+            services.AddTransient<IUsersService, UsersService>();
 
             // Identity stores
             services.AddTransient<IUserStore<ApplicationUser>, ApplicationUserStore>();
