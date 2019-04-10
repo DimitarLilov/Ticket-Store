@@ -6,7 +6,8 @@ export class UserService {
 
   
     public static readonly URLS: any = {
-        USER: 'api/user/',
+        USER: 'api/users/',
+        USERTICKETS: 'api/users/tickets'
     };
 
     constructor(private httpClient: HttpClient)

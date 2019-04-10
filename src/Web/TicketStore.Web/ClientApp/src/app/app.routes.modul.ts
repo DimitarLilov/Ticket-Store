@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { CartComponent,  } from './components/cart/cart.component';
-import { AdminGuard } from './services/guards/admin-guard.service';
+import { CartComponent  } from './components/cart/cart.component';
+import { AdminGuard, AuthGuardService } from './services/index';
 import { CartCheckoutComponent } from './components/cart/cart-checkout/cart-checkout.component';
 
 export const APP_ROUTES: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: 'users', canActivate: [ AuthGuardService ], loadChildren: './components/user/user.module#UserModule'},
   { path: 'account', loadChildren: './components/account/account.module#AccountModule' },
   { path: 'events', loadChildren: './components/event/event.module#EventModule' },
   { path: 'categories', loadChildren: './components/category/category.module#CategoryModule' },
