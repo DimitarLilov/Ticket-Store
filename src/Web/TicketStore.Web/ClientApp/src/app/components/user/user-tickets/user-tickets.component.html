@@ -1,0 +1,28 @@
+<div *ngFor="let userTicket of userTickets" class="col-sm-4">
+  <div class="ticketWrap">
+    <div class="ticket ticketLeft">
+      <h1>{{userTicket.ticket.name}} <span>Ticket</span></h1>
+      <div class="ticket-title">
+          <h2>{{userTicket.ticket.event.title}}</h2>
+        <span>event</span>
+      </div>
+      <div class="ticket-name">
+        <h2>{{userTicket.user.firstName}} {{userTicket.user.lastName}}</h2>
+        <span>name</span>
+      </div>
+      <div class="ticket-seat">
+        <h2>{{userTicket.ticket.event.date | date:'shortDate'}}</h2>
+        <span>date</span>
+      </div>
+      <div class="ticket-time">
+        <h2>{{userTicket.ticket.event.date | date:'shortTime'}}</h2>
+        <span>time</span>
+      </div>
+
+    </div>
+    <div class="ticket ticketRight">
+      <div class="ticket-price">Price: {{userTicket.ticket.price}} </div>
+      <div class="barcode" id=""></div>
+    </div>
+
+  </div>
