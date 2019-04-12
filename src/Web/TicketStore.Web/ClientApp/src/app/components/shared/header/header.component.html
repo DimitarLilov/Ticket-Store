@@ -41,7 +41,7 @@
           </li>
           <li *ngIf="isUserAuthorized" class="nav-item" [routerLinkActive]='["link-active"]'
             [routerLinkActiveOptions]='{ exact: true }'>
-            <a *ngIf="firstName" class="nav-link text-dark" [routerLink]='["/user"]'>Hello, {{firstName}}!</a>
+            <a *ngIf="firstName" class="nav-link text-dark" [routerLink]='["/users/tickets"]'>Hello, {{firstName}}!</a>
           </li>
           <li *ngIf="isUserAuthorized" class="nav-item" [routerLinkActive]='["link-active"]'
             [routerLinkActiveOptions]='{ exact: true }'>
