@@ -1,6 +1,5 @@
 .ticketWrap {
-  width: 27em;
-  margin: 3em auto;
+  width: 31em;
   color: #fff;
   font-family: sans-serif;
 }
@@ -17,7 +16,7 @@
 .ticketLeft {
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
-  width: 16em;
+  width: 22em;
 }
 
 .ticketRight {
