@@ -6,7 +6,7 @@
   </div>
   <div class="row space-top">
     <div class="card-deck" >
-      <div *ngFor="let e of events" class="col-md-4 hoverable">
+      <div *ngFor="let e of events.events" class="col-md-4 hoverable">
         <a routerLink="{{e.id}}" class="card">
             <img class="card-img-top" src="{{e.image}}" alt="Card image cap">
           <div class="card-body">

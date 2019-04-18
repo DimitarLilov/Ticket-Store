@@ -1,5 +1,3 @@
-import { TicketDetails } from "../tickets/ticket-details";
-
 export class Event {
     public id : number;
 

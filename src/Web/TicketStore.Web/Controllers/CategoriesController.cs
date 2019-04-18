@@ -60,11 +60,11 @@
             if (filter.Page != null && filter.Page != 0)
             {
                 var skip = (filter.Page - 1) * filter.Limit;
-                response.Events = this.eventsService.GetAllEvents(getEventsByCatecoryExpresiond, orderByExpression, orderByDecendingExpression, skip, filter.Limit);
+                response.Events = this.eventsService.GetAllEvents(getEventsByCatecoryExpresiond, orderByExpression, orderByDecendingExpression, skip, filter.Limit).Events;
                 return this.Ok(response);
             }
 
-            var events = this.eventsService.GetAllEvents(getEventsByCatecoryExpresiond, orderByExpression, orderByDecendingExpression, null, filter.Limit);
+            var events = this.eventsService.GetAllEvents(getEventsByCatecoryExpresiond, orderByExpression, orderByDecendingExpression, null, filter.Limit).Events;
             response.Events = events;
             return this.Ok(response);
         }

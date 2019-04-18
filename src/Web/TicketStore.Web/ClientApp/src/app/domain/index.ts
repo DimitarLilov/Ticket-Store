@@ -1,6 +1,7 @@
 export * from './user-login';
 export * from './user-register';
 export * from './event/event';
+export * from './event/event-list';
 export * from './event/event-details';
 export * from './event/event-create';
 export * from './event/event-edit';

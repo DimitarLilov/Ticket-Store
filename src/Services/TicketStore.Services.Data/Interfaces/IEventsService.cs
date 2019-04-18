@@ -10,7 +10,7 @@
 
     public interface IEventsService
     {
-        IEnumerable<EventListItem> GetAllEvents(
+        AllEventsResponseModel GetAllEvents(
             Expression<Func<Event, bool>> predicate = null,
             Expression<Func<Event, object>> orderBy = null,
             Expression<Func<Event, object>> orderByDescending = null,

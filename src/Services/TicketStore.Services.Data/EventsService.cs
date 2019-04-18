@@ -51,7 +51,7 @@
             return Mapper.Map<EditEventResponseModel>(model);
         }
 
-        public IEnumerable<EventListItem> GetAllEvents(
+        public AllEventsResponseModel GetAllEvents(
             Expression<Func<Event, bool>> predicate = null, 
             Expression<Func<Event, object>> orderBy = null, 
             Expression<Func<Event, object>> orderByDescending = null, 
@@ -75,6 +75,8 @@
                 events = events.OrderByDescending(orderByDescending);
             }
 
+            var count = events.Count();
+
             if (skip != null)
             {
                 events = events.Skip(skip.Value);
@@ -85,12 +87,17 @@
                 events = events.Take(take.Value);
             }
 
-            return events.To<EventListItem>().ToList();
+            var eventsResult = events.To<EventListItem>().ToList();
+            return new AllEventsResponseModel()
+            {
+                Events = eventsResult,
+                Size = count
+            };
         }
 
         public IEnumerable<EventListItem> GetEventsByCategoryId(int id)
         {
-            return this.GetAllEvents(e => e.CategoryId == id).ToList();
+            return this.GetAllEvents(e => e.CategoryId == id).Events.ToList();
         }
 
         public EventDetailsResponseModel GetEvetById(int id)
