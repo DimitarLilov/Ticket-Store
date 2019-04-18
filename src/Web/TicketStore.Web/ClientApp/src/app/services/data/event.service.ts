@@ -19,7 +19,11 @@ export class EventService {
 
 
     public getAllEvents() {
-        return this.httpClient.get<EventList>(EventService.URLS.EVENTS)
+        return this.httpClient.get<EventList>(EventService.URLS.EVENTS);
+    }
+
+    public getEventsPage(page: number, limit: number){
+        return this.httpClient.get<EventList>(EventService.URLS.EVENTS + `?page=${page}&limit=${limit}`)
     }
 
     public getEditEventsById(id :string){
