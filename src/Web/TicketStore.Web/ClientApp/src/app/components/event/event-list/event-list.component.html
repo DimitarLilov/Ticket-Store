@@ -1,4 +1,4 @@
-<div *ngIf="events" class="container">
+<div *ngIf="events" class="container-fluid">
   <div class="row space-top">
     <div class="col-md-12">
       <h1>Events</h1>
@@ -6,7 +6,7 @@
   </div>
   <div class="row space-top">
     <div class="card-deck">
-      <div *ngFor="let e of events.events" class="col-md-4 hoverable">
+      <div *ngFor="let e of events.events" class="hoverable">
         <a routerLink="{{e.id}}" class="card">
           <img class="card-img-top" src="{{e.image}}" alt="Card image cap">
           <div class="card-body">
@@ -18,7 +18,8 @@
       </div>
     </div>
   </div>
-  <nav aria-label="Page navigation example">
-    <ngb-pagination [collectionSize]="events.size" [pageSize]="limit" [(page)]="page" (pageChange)="getPageFromService($event)" aria-label="Default pagination"></ngb-pagination>
+  <nav>
+    <ngb-pagination [collectionSize]="events.size" [pageSize]="limit" [(page)]="page"
+      (pageChange)="getPageFromService($event)" aria-label="Default pagination"></ngb-pagination>
   </nav>
 </div>

@@ -1,4 +1,5 @@
 a.card {
+  width: 20rem;
     text-decoration: none;
     color: inherit;
     transition: transform .5s;
