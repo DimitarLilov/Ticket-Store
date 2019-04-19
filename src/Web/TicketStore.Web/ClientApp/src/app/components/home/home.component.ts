@@ -13,9 +13,10 @@ export class HomeComponent implements OnInit{
   topEvent : HomeEvent
 
   constructor(private eventService : EventService) {}
+  
   ngOnInit(): void {
       this.eventService.getLastThreeEvents().subscribe((data) => {
-          this.lastThreeEvents = data;
+        this.lastThreeEvents = data;
       }) 
       this.eventService.getTopEvent().subscribe((data) => {
         this.topEvent = data[1];

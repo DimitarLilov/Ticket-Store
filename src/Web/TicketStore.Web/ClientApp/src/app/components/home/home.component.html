@@ -2,7 +2,7 @@
   <div class="col-md-8">
     <h1>Last Events</h1>
     <ngb-carousel *ngIf="lastThreeEvents">
-      <ng-template *ngFor="let event of lastThreeEvents" ngbSlide>
+      <ng-template *ngFor="let event of lastThreeEvents.events" ngbSlide>
         <img [src]="event.image" alt="{{event.title}}" class="last">
         <div class="carousel-caption">
           <h2> <a routerLink="events/{{event.id}}">{{event.title}}</a></h2>

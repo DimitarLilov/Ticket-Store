@@ -9,6 +9,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+
     using TicketStore.Common;
     using TicketStore.Data.Models;
     using TicketStore.Services.Data.Interfaces;
