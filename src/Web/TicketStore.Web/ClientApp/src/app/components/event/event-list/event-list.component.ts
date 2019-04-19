@@ -21,7 +21,7 @@ export class AllEventComponent implements OnInit{
         });
     }
 
-    getPageFromService(page) {
+    getPage(page) {
         this.eventService.getEventsPage(page, this.limit).subscribe((data) => {
             this.events = data;
         });

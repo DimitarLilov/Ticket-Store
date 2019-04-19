@@ -5,7 +5,6 @@
 <table *ngIf="events" class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">#</th>
       <th scope="col">Title</th>
       <th scope="col">Location</th>
       <th scope="col">Date</th>
@@ -14,8 +13,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let event of events; index as i">
-      <th scope="row">{{ i + 1 }}</th>
+    <tr *ngFor="let event of events.events">
       <td>{{ event.title}}</td>
       <td>{{event.location}}, {{event.town}}</td>
       <td>{{event.date | date:'fullDate'}}</td>
@@ -28,3 +26,7 @@
     </tr>
   </tbody>
 </table>
+<nav>
+  <ngb-pagination [collectionSize]="events.size" [pageSize]="limit" [(page)]="page"
+    (pageChange)="getPage($event)" aria-label="Default pagination"></ngb-pagination>
+</nav>

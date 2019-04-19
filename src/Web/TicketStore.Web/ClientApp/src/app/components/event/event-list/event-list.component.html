@@ -20,6 +20,6 @@
   </div>
   <nav>
     <ngb-pagination [collectionSize]="events.size" [pageSize]="limit" [(page)]="page"
-      (pageChange)="getPageFromService($event)" aria-label="Default pagination"></ngb-pagination>
+      (pageChange)="getPage($event)" aria-label="Default pagination"></ngb-pagination>
   </nav>
 </div>
