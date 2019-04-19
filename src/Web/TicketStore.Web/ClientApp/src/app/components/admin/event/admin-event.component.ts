@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Event} from '../../../domain/index';
+import { EventList } from '../../../domain/index';
 import { EventService } from '../../../services/data/event.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { EventService } from '../../../services/data/event.service';
 })
 
 export class AdminAllEventComponent implements OnInit{
-    events : Event[];
+    events : EventList;
 
     constructor(private eventService : EventService) {}
 

@@ -6,7 +6,7 @@
   </div>
   <div class="row space-top">
     <div class="card-deck">
-      <div *ngFor="let e of category.events" class="col-md-4 hoverable">
+      <div *ngFor="let e of category.events.events" class="hoverable">
         <a routerLink="/events/{{e.id}}" class="card">
           <img class="card-img-top" src="{{e.image}}" alt="Card image cap">
           <div class="card-body">
@@ -18,4 +18,8 @@
       </div>
     </div>
   </div>
+  <nav>
+    <ngb-pagination [collectionSize]="category.events.size" [pageSize]="limit" [(page)]="page"
+      (pageChange)="getPage($event)" aria-label="Default pagination"></ngb-pagination>
+  </nav>
 </div>

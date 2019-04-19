@@ -7,6 +7,6 @@
     {
         public string Name { get; set; }
 
-        public IEnumerable<EventListItem> Events { get; set; }
+        public AllEventsResponseModel Events { get; set; }
     }
 }

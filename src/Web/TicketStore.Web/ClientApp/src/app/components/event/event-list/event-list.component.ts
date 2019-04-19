@@ -4,8 +4,8 @@ import { EventService } from '../../../services/data/event.service';
 
 @Component({
     selector: 'app-event-list',
-  templateUrl: './event-list.component.html',
-  styleUrls: ['./event-list.component.css']
+    templateUrl: './event-list.component.html',
+    styleUrls: ['./event-list.component.css']
 })
 
 export class AllEventComponent implements OnInit{

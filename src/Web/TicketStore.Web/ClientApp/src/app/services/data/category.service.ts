@@ -37,4 +37,8 @@ export class CategoryService {
     public getCategoryDetailsById(id: string){
         return this.httpClient.get<CategoryDetails>(CategoryService.URLS.CATEGORY + id);
     }
+
+    public getCategoryDetailsPage(id: string, page: number, limit:number){
+        return this.httpClient.get<CategoryDetails>(CategoryService.URLS.CATEGORY  + id + `?page=${page}&limit=${limit}`)
+    }
 }

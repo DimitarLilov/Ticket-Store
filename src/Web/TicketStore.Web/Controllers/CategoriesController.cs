@@ -55,16 +55,16 @@
 
             Expression<Func<Event, object>> orderByExpression = this.eventsService.GetSortOrderExpression(filter.OrderBy);
             Expression<Func<Event, object>> orderByDecendingExpression = this.eventsService.GetSortOrderExpression(filter.OrderByDecending);
-            Expression<Func<Event, bool>> getEventsByCatecoryExpresiond = e => e.CategoryId == id;
+            Expression<Func<Event, bool>> getEventsByCatecoryExpresion = e => e.CategoryId == id;
 
             if (filter.Page != null && filter.Page != 0)
             {
                 var skip = (filter.Page - 1) * filter.Limit;
-                response.Events = this.eventsService.GetAllEvents(getEventsByCatecoryExpresiond, orderByExpression, orderByDecendingExpression, skip, filter.Limit).Events;
+                response.Events = this.eventsService.GetAllEvents(getEventsByCatecoryExpresion, orderByExpression, orderByDecendingExpression, skip, filter.Limit);
                 return this.Ok(response);
             }
 
-            var events = this.eventsService.GetAllEvents(getEventsByCatecoryExpresiond, orderByExpression, orderByDecendingExpression, null, filter.Limit).Events;
+            var events = this.eventsService.GetAllEvents(getEventsByCatecoryExpresion, orderByExpression, orderByDecendingExpression, null, filter.Limit);
             response.Events = events;
             return this.Ok(response);
         }
