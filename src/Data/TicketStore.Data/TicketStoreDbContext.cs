@@ -19,6 +19,8 @@
 
         public DbSet<Ad> Ads { get; set; }
 
+        public DbSet<AdType> AdTypes { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

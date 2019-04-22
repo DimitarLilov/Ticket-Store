@@ -10,7 +10,7 @@ using TicketStore.Data;
 namespace TicketStore.Data.Migrations
 {
     [DbContext(typeof(TicketStoreDbContext))]
-    [Migration("20190422094904_Ad_Type")]
+    [Migration("20190422113805_Ad_Type")]
     partial class Ad_Type
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -142,7 +142,7 @@ namespace TicketStore.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AdType");
+                    b.ToTable("AdTypes");
                 });
 
             modelBuilder.Entity("TicketStore.Data.Models.ApplicationRole", b =>

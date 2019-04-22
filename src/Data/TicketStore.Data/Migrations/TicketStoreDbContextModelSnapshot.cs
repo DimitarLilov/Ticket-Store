@@ -140,7 +140,7 @@ namespace TicketStore.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AdType");
+                    b.ToTable("AdTypes");
                 });
 
             modelBuilder.Entity("TicketStore.Data.Models.ApplicationRole", b =>
