@@ -8,7 +8,7 @@
     public class Ad : BaseModel<int>
     {
         [Required]
-        public string Type { get; set; }
+        public AdType Type { get; set; }
 
         [ForeignKey("Event")]
         public int EveentId { get; set; }
