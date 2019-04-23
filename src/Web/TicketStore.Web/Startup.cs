@@ -48,6 +48,7 @@ namespace TicketStore.Web
                 typeof(EventListItem).Assembly,
                 typeof(CategoryResponseModel).Assembly,
                 typeof(EventDetailsResponseModel).Assembly,
+                 typeof(Ad).Assembly,
                 typeof(Event).Assembly,
                 typeof(Category).Assembly,
                 typeof(Ticket).Assembly);

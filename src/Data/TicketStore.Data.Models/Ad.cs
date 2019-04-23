@@ -11,7 +11,7 @@
         public AdType Type { get; set; }
 
         [ForeignKey("Event")]
-        public int EveentId { get; set; }
+        public int EventId { get; set; }
 
         public bool Active { get; set; }
 
