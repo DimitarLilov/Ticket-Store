@@ -19,7 +19,8 @@ export class HomeComponent implements OnInit{
         this.lastThreeEvents = data;
       }) 
       this.eventService.getTopEvent().subscribe((data) => {
-        this.topEvent = data[1];
+        let random = Math.floor(Math.random() * Math.floor(data.length))
+        this.topEvent = data[random].event;
     }) 
   }
 }

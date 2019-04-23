@@ -10,7 +10,7 @@ export class EventService {
     public static readonly URLS: any = {
         EVENTS: 'api/events/',
         GET_LAST_THREE_EVENTS: 'api/events?&orderByDecending=id&limit=3',
-        GET_TOP_EVENTS: 'api/events?&orderBy=id&limit=2',
+        GET_TOP_EVENTS: 'api/ads/top',
     };
 
     constructor(
@@ -40,7 +40,7 @@ export class EventService {
 
     public getTopEvent()
     {
-        return this.httpClient.get<HomeEvent>(EventService.URLS.GET_TOP_EVENTS)
+        return this.httpClient.get<any[]>(EventService.URLS.GET_TOP_EVENTS)
     }
 
     public createEvent(body : EventCreate){

@@ -26,12 +26,12 @@
 
         public IEnumerable<AdResponseModel> GetAdsByType(string type)
         {
-            return this.adsRepository.All().Where(a => a.Type.Type == type).To<AdResponseModel>();
+            return this.adsRepository.All().Where(a => a.Type.Type == type && a.Active == true).To<AdResponseModel>();
         }
 
         public IEnumerable<AdResponseModel> GetAllAds()
         {
-            return this.adsRepository.All().To<AdResponseModel>();
+            return this.adsRepository.All().Where(a => a.Active == true).To<AdResponseModel>();
         }
     }
 }
