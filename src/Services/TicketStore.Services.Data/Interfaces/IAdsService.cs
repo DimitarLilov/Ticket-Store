@@ -19,5 +19,7 @@
         AdResponseModel GetAdById(int id);
 
         Task<AdResponseModel> EditAd(int id, EditAdRequestModel model);
+
+        Task DeleteAd(int id);
     }
 }

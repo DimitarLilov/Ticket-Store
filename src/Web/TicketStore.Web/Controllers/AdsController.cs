@@ -123,5 +123,30 @@ namespace TicketStore.Web.Controllers
             return this.Ok(await this.adsService.EditAd(id, model));
         }
 
+        [HttpDelete("{id}")]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName, AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult> Delete(int id)
+        {
+            if (!this.HttpContext.User.IsInRole(GlobalConstants.AdministratorRoleName))
+            {
+                return this.Unauthorized();
+            }
+
+            var ad = this.adsService.GetAdById(id);
+
+            if (ad == null)
+            {
+                return this.NotFound();
+            }    
+
+            await this.adsService.DeleteAd(id);
+
+            return this.Ok();
+        }
     }
 }

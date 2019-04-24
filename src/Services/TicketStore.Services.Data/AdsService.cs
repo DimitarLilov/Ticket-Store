@@ -67,5 +67,14 @@
         {
             return this.adsTypeRepository.All().Where(a => a.Id == id).To<AdTypeResponseModel>().FirstOrDefault();
         }
+
+        public async Task DeleteAd(int id)
+        {
+            var ad = this.adsRepository.All().FirstOrDefault(a => a.Id == id);
+            ad.Active = false;
+
+            this.adsRepository.Update(ad);
+            await this.adsRepository.SaveChangesAsync();
+        }
     }
 }
