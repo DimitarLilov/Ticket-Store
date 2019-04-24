@@ -1,4 +1,6 @@
-﻿namespace TicketStore.Web.Controllers
+﻿using Microsoft.AspNetCore.Http;
+
+namespace TicketStore.Web.Controllers
 {
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Authorization;
@@ -22,24 +24,21 @@
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public ActionResult<IEnumerable<AdResponseModel>> Index(int page)
-        {
-            var ads = this.adsService.GetAllAds();
-
-            return this.Ok(ads);
-        }
-
-        [HttpGet("{type}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
-        public ActionResult<AdResponseModel> Details(string type)
+        public ActionResult<IEnumerable<AdResponseModel>> Index([FromQuery]string type, int page)
         {
-            if (!this.adsService.ContainsAdsType(type))
+            if (!string.IsNullOrEmpty(type))
             {
-                return this.NotFound();
+                if (!this.adsService.ContainsAdsType(type))
+                {
+                    return this.NotFound();
+                }
+                return this.Ok(this.adsService.GetAdsByType(type));
             }
-            var ads = this.adsService.GetAdsByType(type);
+
+            var ads = this.adsService.GetAllAds();
+
             return this.Ok(ads);
         }
 

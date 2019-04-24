@@ -10,7 +10,7 @@ export class EventService {
     public static readonly URLS: any = {
         EVENTS: 'api/events/',
         GET_LAST_THREE_EVENTS: 'api/events?&orderByDecending=id&limit=3',
-        GET_TOP_EVENTS: 'api/ads/top',
+        GET_TOP_EVENTS: 'api/ads?type=top',
     };
 
     constructor(
