@@ -41,6 +41,29 @@ namespace TicketStore.Web.Controllers
             return this.Ok(this.adsService.GetAllAds());
         }
 
+        [HttpGet("{id}")]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName, AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
+        public ActionResult<AdResponseModel> Details(int id, int page)
+        {
+            if (!this.HttpContext.User.IsInRole(GlobalConstants.AdministratorRoleName))
+            {
+                return this.Unauthorized();
+            }
+
+            var ad = this.adsService.GetAdById(id);
+
+            if(ad == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.Ok(ad);
+        }
+
         [HttpPost]
         [Authorize(Roles = GlobalConstants.AdministratorRoleName, AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [ProducesResponseType(StatusCodes.Status200OK)]
