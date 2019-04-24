@@ -28,9 +28,7 @@
             await this.adsRepository.AddAsync(ad);
             await this.adsRepository.SaveChangesAsync();
 
-            var response = this.adsRepository.All().FirstOrDefault(a => a.Id == ad.Id);
-
-            return Mapper.Map<AdResponseModel>(response);
+            return this.adsRepository.All().Where(e => e.Id == ad.Id).To<AdResponseModel>().FirstOrDefault();
         }
 
         public async Task<AdResponseModel> EditAd(int id, EditAdRequestModel model)
@@ -42,9 +40,7 @@
             this.adsRepository.Update(editModel);
             await this.adsRepository.SaveChangesAsync();
 
-            var response = await this.adsRepository.GetByIdAsync(id);
-
-            return Mapper.Map<AdResponseModel>(response);
+            return this.adsRepository.All().Where(e => e.Id == id).To<AdResponseModel>().FirstOrDefault();
         }
 
         public AdResponseModel GetAdById(int id)
