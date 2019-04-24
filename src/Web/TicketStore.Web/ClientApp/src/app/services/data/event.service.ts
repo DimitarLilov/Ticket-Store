@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Event, EventDetails, EventCreate, HomeEvent, EventEdit, EventList } from '../../domain/index';
+import { EventDetails, EventCreate, HomeEvent, EventEdit, EventList } from '../../domain/index';
 
 
 @Injectable()
@@ -13,8 +13,7 @@ export class EventService {
         GET_TOP_EVENTS: 'api/ads?type=top',
     };
 
-    constructor(
-        private httpClient: HttpClient)
+    constructor(private httpClient: HttpClient)
     { }
 
 
