@@ -34,12 +34,11 @@ namespace TicketStore.Web.Controllers
                 {
                     return this.NotFound();
                 }
+
                 return this.Ok(this.adsService.GetAdsByType(type));
             }
 
-            var ads = this.adsService.GetAllAds();
-
-            return this.Ok(ads);
+            return this.Ok(this.adsService.GetAllAds());
         }
 
         [HttpPost]
@@ -55,12 +54,50 @@ namespace TicketStore.Web.Controllers
                 return this.Unauthorized();
             }
 
+            if (this.adsService.GetAdTypeById(model.TypeId) == null)
+            {
+                return this.BadRequest();
+            }
+
             if (model == null || !this.ModelState.IsValid)
             {
                 return this.BadRequest(this.ModelState.GetFirstError());
             }
 
             return this.Ok(await this.adsService.AddAd(model));
+        }
+
+        [HttpPut("{id}")]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName, AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult<AdResponseModel>> Edit(int id, [FromBody]EditAdRequestModel model)
+        {
+            var ad = this.adsService.GetAdById(id);
+
+            if (ad == null)
+            {
+                return this.NotFound();
+            }
+
+            if (!this.HttpContext.User.IsInRole(GlobalConstants.AdministratorRoleName))
+            {
+                return this.Unauthorized();
+            }
+
+            if (this.adsService.GetAdTypeById(model.TypeId) == null)
+            {
+                return this.BadRequest();
+            }
+
+            if (model == null || !this.ModelState.IsValid)
+            {
+                return this.BadRequest(this.ModelState.GetFirstError());
+            }
+
+            return this.Ok(await this.adsService.EditAd(id, model));
         }
 
     }

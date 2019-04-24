@@ -8,18 +8,23 @@
     public class Ad : BaseModel<int>
     {
         [Required]
+        [ForeignKey("Type")]
+        public int TypeId { get; set; }
+
+        [Required]
         public AdType Type { get; set; }
 
+        [Required]
         [ForeignKey("Event")]
         public int EventId { get; set; }
+
+        [Required]
+        public Event Event { get; set; }
 
         public bool Active { get; set; }
 
         public DateTime StartDate { get; set; }
 
         public DateTime EndDate { get; set; }
-
-        [Required]
-        public virtual Event Event { get; set; }
     }
 }

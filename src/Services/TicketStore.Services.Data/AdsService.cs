@@ -30,13 +30,26 @@
 
             var response = this.adsRepository.All().FirstOrDefault(a => a.Id == ad.Id);
 
-            var t =  Mapper.Map<AdResponseModel>(response);
-            return t;
+            return Mapper.Map<AdResponseModel>(response);
         }
 
-        public bool ContainsAdsType(string type)
+        public async Task<AdResponseModel> EditAd(int id, EditAdRequestModel model)
         {
-            return this.adsTypeRepository.All().FirstOrDefault(a => a.Type == type) != null;
+            var editModel = Mapper.Map<Ad>(model);
+            editModel.Id = id;
+            editModel.EventId = this.GetAdById(id).Event.Id;
+
+            this.adsRepository.Update(editModel);
+            await this.adsRepository.SaveChangesAsync();
+
+            var response = await this.adsRepository.GetByIdAsync(id);
+
+            return Mapper.Map<AdResponseModel>(response);
+        }
+
+        public AdResponseModel GetAdById(int id)
+        {
+            return this.adsRepository.All().Where(e => e.Id == id).To<AdResponseModel>().FirstOrDefault();
         }
 
         public IEnumerable<AdResponseModel> GetAdsByType(string type)
@@ -44,9 +57,19 @@
             return this.adsRepository.All().Where(a => a.Type.Type == type && a.Active == true).To<AdResponseModel>().ToList();
         }
 
+        public bool ContainsAdsType(string type)
+        {
+            return this.adsTypeRepository.All().FirstOrDefault(a => a.Type == type) != null;
+        }
+
         public IEnumerable<AdResponseModel> GetAllAds()
         {
             return this.adsRepository.All().Where(a => a.Active == true).To<AdResponseModel>().ToList();
+        }
+
+        public AdTypeResponseModel GetAdTypeById(int id)
+        {
+            return this.adsTypeRepository.All().Where(a => a.Id == id).To<AdTypeResponseModel>().FirstOrDefault();
         }
     }
 }

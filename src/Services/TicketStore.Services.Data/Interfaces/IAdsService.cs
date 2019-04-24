@@ -10,7 +10,14 @@
 
         bool ContainsAdsType(string type);
 
+        AdTypeResponseModel GetAdTypeById(int id);
+
         IEnumerable<AdResponseModel> GetAdsByType(string type);
+
         Task<AdResponseModel> AddAd(CreateAdRequestModel model);
+
+        AdResponseModel GetAdById(int id);
+
+        Task<AdResponseModel> EditAd(int id, EditAdRequestModel model);
     }
 }
