@@ -17,6 +17,7 @@ import { TicketService } from './data/ticket.service';
 import { CategoryService } from './data/category.service';
 import { OrderService } from './data/order.service';
 import { UserService } from './data/user.service';
+import { AdService } from './data/ad.service';
 
 
 export * from './guards/auth-guard.service';
@@ -37,8 +38,7 @@ export * from './data/ticket.service';
 export * from './data/category.service';
 export * from './data/order.service';
 export * from './data/user.service';
-
-
+export * from './data/ad.service';
 
 export const APP_SERVICES = [
     AuthGuardService,
@@ -58,5 +58,6 @@ export const APP_SERVICES = [
     TicketService,
     CategoryService,
     OrderService,
-    UserService
+    UserService,
+    AdService
 ];

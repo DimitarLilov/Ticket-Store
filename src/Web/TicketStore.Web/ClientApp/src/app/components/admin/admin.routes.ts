@@ -15,11 +15,10 @@ import {
   TicketCreateComponent,
   TicketEditComponent,
   TicketDeleteComponent,
-  OrderComponent
+  OrderComponent,
+  AdminAllAdsComponent
+
 } from './index';
-
-
-
 
 const EVENT_ROUTES : Routes = [
   { path: '', pathMatch: 'full', component: AdminComponent},
@@ -36,6 +35,7 @@ const EVENT_ROUTES : Routes = [
   { path: 'tickets/edit/:id', pathMatch: 'full', component: TicketEditComponent},
   { path: 'tickets/delete/:id', pathMatch: 'full', component: TicketDeleteComponent},
   { path: 'orders', pathMatch: 'full', component: OrderComponent},
+  { path: 'ads', pathMatch: 'full', component: AdminAllAdsComponent},
   ]
 
 @NgModule({

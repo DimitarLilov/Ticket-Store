@@ -21,3 +21,4 @@ export * from './order/order';
 export * from './user/user';
 export * from './user/user-names';
 export * from './user/user-tickets';
+export * from './ad/Ad'

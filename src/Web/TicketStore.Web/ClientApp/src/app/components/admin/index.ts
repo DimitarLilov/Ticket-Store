@@ -12,6 +12,7 @@ import { TicketCreateComponent } from './ticket/ticket-create/ticket-create.comp
 import { TicketEditComponent } from './ticket/ticket-edit/ticket-edit.component';
 import { TicketDeleteComponent } from './ticket/ticket-delete/ticket-delete.component';
 import { OrderComponent } from './order/order-list/order-list.component';
+import { AdminAllAdsComponent } from './ad/admin-ad.component';
 
 export * from './event/admin-event.component';
 export * from './event/event-create/event-create.component';
@@ -27,6 +28,7 @@ export * from './ticket/ticket-create/ticket-create.component';
 export * from './ticket/ticket-edit/ticket-edit.component';
 export * from './ticket/ticket-delete/ticket-delete.component';
 export * from './order/order-list/order-list.component';
+export * from './ad/admin-ad.component';
 
 export const ADMIN_COMPONTNTS = [
     EventCreateComponent,
@@ -42,5 +44,6 @@ export const ADMIN_COMPONTNTS = [
     TicketCreateComponent,
     TicketEditComponent,
     TicketDeleteComponent,
-    OrderComponent
+    OrderComponent,
+    AdminAllAdsComponent
 ]

@@ -1,0 +1,29 @@
+<div>
+    <button routerLink="create" class="btn btn-primary">Add Ad</button>
+  </div>
+  <br>
+  <table *ngIf="ads" class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Event Name</th>
+        <th scope="col">Type</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ad of ads; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ ad.event.title }}</td>
+        <td>{{ ad.type }}</td>
+        <td>{{ ad.startDate | date:'mediumDate' }}</td>
+        <td>{{ ad.endDate | date:'mediumDate' }}</td>
+        <td class="actions">
+          <button routerLink="edit/{{ad.id}}" class="btn btn-primary">Edit</button>
+          <button routerLink="delete/{{ad.id}}" type="button" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

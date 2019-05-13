@@ -8,6 +8,8 @@
 
     public class AdResponseModel : IMapFrom<Ad>, IHaveCustomMappings
     {
+        public int Id { get; set; }
+
         public EventListItem Event { get; set; }
 
         public string Type { get; set; }
